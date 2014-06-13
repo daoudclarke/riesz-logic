@@ -8,32 +8,35 @@ formulas(sos).
 
 % Inference rule
 
-%  x & (x => y) -> y.    % Modus ponens
+P(x) & P(x => y) -> P(y)             # label(MP).
 
 % Axioms for Riesz space logic
 
-P((x => y) => ((z => x) => (z => y))).
-P(((z => x) => (z => y)) => (x => y)).
+% These two together allow proof of first five BAL axioms
+P((x => y) => ((y => z) => (x => z))) # label(BL1).
+P(((y => z) => (x => z)) => (x => y)) # label(BL1a).
 
-P((x => (y => z)) => (y => (x => z))).
+% Needed to prove BALPI and BALPa
+P(x ^ y => x)                         # label(BL2).
 
-P(((x => y) => y) => x).
-P(x => ((x => y) => y)).
+% Needed to prove BALO
+P(x ^ y => y ^ x)                     # label(BL3).
 
-P(((x v 0) v 0) => x v 0).
-P(x v 0 => ((x v 0) v 0)).
 
-P(((x => y) v 0 => (y => x) v 0) => (y => x)).
-P((y => x) => ((x => y) v 0 => (y => x) v 0)).
+%% %P(x => x ^ x).
+%% P((z => (x ^ y)) => ((z => x) ^ (z => y))) # label(R1a).
+%% P(((z => x) ^ (z => y)) => (z => (x ^ y))) # label(R1b).
 
-P(x => x v y)
+%% %% % Definition of zero
 
-% BAL inference rules
+P(0 => (z => z)).
+P((z => z) => 0).
 
-P(x) & P(x => y) -> P(y).
-% P(x) & P(y) -> P(x => y).
-P(x) -> P(x v 0).
-P((x => y) v 0) -> P((x v 0 => y v 0) v 0).
+%% %% % Definition of join
+
+P(x v y => (((x => 0) ^ (y => 0)) => 0)).
+P((((x => 0) ^ (y => 0) => 0)) => x v y).
+%% P(x v y) <-> P( ((x => (z => z)) ^ (y => (v5 => v5))) => (v6 => v6)).
 
 end_of_list.
 
@@ -46,26 +49,39 @@ formulas(goals).
 % BAL axioms. These come in pairs since we are asserting positivity
 % rather than equality to zero.
 
-P((x => y) => ((z => x) => (z => y))).
-P(((z => x) => (z => y)) => (x => y)).
+% Proven: -----------------------------------
 
-P((x => (y => z)) => (y => (x => z))).
+%P((x => y) => ((z => x) => (z => y))). 
+%P(((z => x) => (z => y)) => (x => y)).
 
-P(((x => y) => y) => x).
-P(x => ((x => y) => y)).
+%P((x => (y => z)) => (y => (x => z))).
 
-P(((x v 0) v 0) => x v 0).
-P(x v 0 => ((x v 0) v 0)).
+%P(((x => y) => y) => x).
+%P(x => ((x => y) => y)).
 
-P(((x => y) v 0 => (y => x) v 0) => (y => x)).
-P((y => x) => ((x => y) v 0 => (y => x) v 0)).
+%P(x v 0 => ((x v 0) v 0)) # label(BALPa).
+
+
+% -------------------------------------------
+
+% Unproven:
+
+% P(((x v 0) v 0) => x v 0).
+
+%% P(((x => y) v 0 => (y => x) v 0) => (y => x)).
+%% P((y => x) => ((x => y) v 0 => (y => x) v 0)).
 
 % BAL inference rules
 
-% P(x) & P(x => y) -> P(y).
-% P(x) & P(y) -> P(x => y).
-% P(x) -> P(x v 0).
-% P((x => y) v 0) -> P((x v 0 => y v 0) v 0).
+% Proven:
+
+% P(x) -> P(x v 0)  # label(BALPI).
+% P(x) & P(x => y) -> P(y). % Assumed
+% P((x => y) v 0) -> P((x v 0 => y v 0) v 0) # label(BALO).
+
+% Unproven
+
+% P(x) & P(y) -> P(x => y). % Actually incorrect in our framework - needs translating.
 
 
 end_of_list.
