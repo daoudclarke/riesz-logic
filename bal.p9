@@ -1,0 +1,71 @@
+assign(max_seconds, 30).
+
+
+op(600, infix, "=>"). % Riesz space implication
+
+
+formulas(sos).
+
+% Inference rule
+
+%  x & (x => y) -> y.    % Modus ponens
+
+% Axioms for Riesz space logic
+
+P((x => y) => ((z => x) => (z => y))).
+P(((z => x) => (z => y)) => (x => y)).
+
+P((x => (y => z)) => (y => (x => z))).
+
+P(((x => y) => y) => x).
+P(x => ((x => y) => y)).
+
+P(((x v 0) v 0) => x v 0).
+P(x v 0 => ((x v 0) v 0)).
+
+P(((x => y) v 0 => (y => x) v 0) => (y => x)).
+P((y => x) => ((x => y) v 0 => (y => x) v 0)).
+
+P(x => x v y)
+
+% BAL inference rules
+
+P(x) & P(x => y) -> P(y).
+% P(x) & P(y) -> P(x => y).
+P(x) -> P(x v 0).
+P((x => y) v 0) -> P((x v 0 => y v 0) v 0).
+
+end_of_list.
+
+
+
+% set(restrict_denials).
+
+formulas(goals).
+
+% BAL axioms. These come in pairs since we are asserting positivity
+% rather than equality to zero.
+
+P((x => y) => ((z => x) => (z => y))).
+P(((z => x) => (z => y)) => (x => y)).
+
+P((x => (y => z)) => (y => (x => z))).
+
+P(((x => y) => y) => x).
+P(x => ((x => y) => y)).
+
+P(((x v 0) v 0) => x v 0).
+P(x v 0 => ((x v 0) v 0)).
+
+P(((x => y) v 0 => (y => x) v 0) => (y => x)).
+P((y => x) => ((x => y) v 0 => (y => x) v 0)).
+
+% BAL inference rules
+
+% P(x) & P(x => y) -> P(y).
+% P(x) & P(y) -> P(x => y).
+% P(x) -> P(x v 0).
+% P((x => y) v 0) -> P((x v 0 => y v 0) v 0).
+
+
+end_of_list.
