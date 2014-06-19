@@ -10,6 +10,9 @@ formulas(sos).
 
 P(x) & P(x => y) -> P(y)             # label(MP).
 
+% Godel's rule
+%P(x) -> P(x ^ x)                     # label(G).
+
 % Axioms for Riesz space logic
 
 % These two together allow proof of first five BAL axioms
@@ -22,25 +25,80 @@ P(x ^ y => x)                         # label(BL2).
 % Needed to prove BALO
 P(x ^ y => y ^ x)                     # label(BL3).
 
+% Adapted from BAL
+P(x ^ y => (x ^ y) ^ y).
+%P((x => 0) ^ 0 => ((x => 0) ^0) ^ 0).
+%P(((x => 0) ^ 0) ^ 0 => x ^ 0).
 
-%% %P(x => x ^ x).
-%% P((z => (x ^ y)) => ((z => x) ^ (z => y))) # label(R1a).
-%% P(((z => x) ^ (z => y)) => (z => (x ^ y))) # label(R1b).
+% Taken from BAL
 
-%% %% % Definition of zero
+%% P(((x v 0) v 0) => x v 0).
+
+%% P(((x => y) v 0 => (y => x) v 0) => (y => x)).
+%% P((y => x) => ((x => y) v 0 => (y => x) v 0)).
+
+
+% Seemingly can't prove these ones:
+%P(x ^ y => (x ^ y) ^ y).
+%P(x => x ^ x).
+%P((z => (x ^ y)) => ((z => x) ^ (z => y))) # label(R1a).
+%P(((z => x) ^ (z => y)) => (z => (x ^ y))) # label(R1b).
+% Negation reverses entailment
+%P(((x => y) => (z => u)) => ((u => z) => (y => x))).
+
+% Definition of zero
 
 P(0 => (z => z)).
 P((z => z) => 0).
 
-%% %% % Definition of join
+% Definition of join
 
 P(x v y => (((x => 0) ^ (y => 0)) => 0)).
 P((((x => 0) ^ (y => 0) => 0)) => x v y).
+
+% old definition:
 %% P(x v y) <-> P( ((x => (z => z)) ^ (y => (v5 => v5))) => (v6 => v6)).
+%% P(x v y) <-> P(((x => 0) ^ (y => 0)) => 0).
 
 end_of_list.
 
+formulas(hints).
 
+P(x) & P(x => y) -> P(y) # label(MP) # label(non_clause).
+P((((x => 0) ^ 0) v 0 => 0) => x v 0) # label(non_clause) # label(goal).
+-P(x) | -P(x => y) | P(y) # label(MP).
+P((x => y) => ((y => z) => (x => z))) # label(BL1).
+P(((x => y) => (z => y)) => (z => x)) # label(BL1a).
+P(x ^ y => x) # label(BL2).
+P(x ^ y => y ^ x) # label(BL3).
+P(0 => (x => x)).
+P((x => x) => 0).
+P(((x => 0) ^ (y => 0) => 0) => x v y).
+-P((((c1 => 0) ^ 0) v 0 => 0) => c1 v 0).
+P((((x => y) => (z => y)) => u) => ((z => x) => u)).
+P(x => ((x => y) => y)).
+P((x => y) => (x ^ z => y)).
+P((x ^ y => z) => (y ^ x => z)).
+P(((x => x) => y) => (0 => y)).
+P((x => x) ^ y => 0).
+P(x ^ (y => y) => 0).
+P(x v 0).
+P((x v 0 => y) => y).
+P(0 => x v 0).
+P(((0 => x v 0) => y) => y).
+P((x => 0) => (x => y v 0)).
+P((x v 0 => 0) => y v 0).
+
+P(x) & P(x => y) -> P(y) # label(MP) # label(non_clause).
+P(((x => 0) => 0) => x) # label(non_clause) # label(goal).
+-P(x) | -P(x => y) | P(y) # label(MP) # label(non_clause).
+P((x => y) => ((y => z) => (x => z))) # label(BL1).
+P(((x => y) => (z => y)) => (z => x)) # label(BL1a).
+-P(((c2 => 0) => 0) => c2).
+P(((x => y) => y) => x).
+
+
+end_of_list.
 
 % set(restrict_denials).
 
@@ -66,7 +124,7 @@ formulas(goals).
 
 % Unproven:
 
-% P(((x v 0) v 0) => x v 0).
+%% P(((x v 0) v 0) => x v 0).
 
 %% P(((x => y) v 0 => (y => x) v 0) => (y => x)).
 %% P((y => x) => ((x => y) v 0 => (y => x) v 0)).
@@ -75,13 +133,28 @@ formulas(goals).
 
 % Proven:
 
-% P(x) -> P(x v 0)  # label(BALPI).
-% P(x) & P(x => y) -> P(y). % Assumed
-% P((x => y) v 0) -> P((x v 0 => y v 0) v 0) # label(BALO).
+% P(x) -> P(x v 0)                                             # label(BALPI).
+% P(x) & P(x => y) -> P(y)                                     # label(MP).     % Assumed
+% P((x => y) v 0) -> P((x v 0 => y v 0) v 0)                   # label(BALMI).
+% P(x) & P(x => 0) & P(y) & P(y => 0) -> P(x => y) & P(y => x) # label(BALG).
 
-% Unproven
+% Other goals we are interested in
 
-% P(x) & P(y) -> P(x => y). % Actually incorrect in our framework - needs translating.
+%% P((z => (x ^ y)) => ((z => x) ^ (z => y))) # label(R1a).
+%% P(x ^ y => (x ^ y) ^ y).
+%% P((x v y) v y => x v y).
+%% P(x => x ^ x).
+%% P(((x => y) => (z => u)) => ((u => z) => (y => x))).
+%% P(((x => 0) => 0) => x).
 
+% Idempotence of + operator
+%P((x => 0) ^ 0 => ((x => 0) ^0) ^ 0).
+%P((((x => 0) ^0) ^ 0 => 0) => ((x => 0) ^ 0 => 0)).
+%P((((x => 0) ^ 0) v 0 => 0) => x v 0).
+%P((((x => 0) ^ 0) v 0 => 0) => x v 0).
+P(((((x => 0) => 0) v (0 => 0)) => 0) v 0 => 0).
+
+
+%P(((x v 0) v 0) => x v 0).
 
 end_of_list.
