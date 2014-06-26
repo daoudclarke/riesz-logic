@@ -26,9 +26,10 @@ P(x ^ y => x)                         # label(BL2).
 P(x ^ y => y ^ x)                     # label(BL3).
 
 % Adapted from BAL
-P(x ^ y => (x ^ y) ^ y).
+%P(x ^ y => (x ^ y) ^ y).
 %P((x => 0) ^ 0 => ((x => 0) ^0) ^ 0).
 %P(((x => 0) ^ 0) ^ 0 => x ^ 0).
+
 
 % Taken from BAL
 
@@ -46,6 +47,10 @@ P(x ^ y => (x ^ y) ^ y).
 % Negation reverses entailment
 %P(((x => y) => (z => u)) => ((u => z) => (y => x))).
 
+% Monotonicity of conjunction
+P((x => y) => (z ^ x => z ^ y)).
+
+
 % Definition of zero
 
 P(0 => (z => z)).
@@ -55,6 +60,9 @@ P((z => z) => 0).
 
 P(x v y => (((x => 0) ^ (y => 0)) => 0)).
 P((((x => 0) ^ (y => 0) => 0)) => x v y).
+
+%P(x ^ y => (((x => 0) v (y => 0)) => 0)).
+%P((((x => 0) v (y => 0) => 0)) => x ^ y).
 
 % old definition:
 %% P(x v y) <-> P( ((x => (z => z)) ^ (y => (v5 => v5))) => (v6 => v6)).
@@ -96,6 +104,45 @@ P((x => y) => ((y => z) => (x => z))) # label(BL1).
 P(((x => y) => (z => y)) => (z => x)) # label(BL1a).
 -P(((c2 => 0) => 0) => c2).
 P(((x => y) => y) => x).
+
+% 9 hints from 2 proof(s) in file zero.out, Thu Jun 26 13:53:29 2014
+
+P(x) & P(x => y) -> P(y) # label(MP) # label(non_clause).
+P(x => ((x => y) => y)) # label(non_clause) # label(goal).
+-P(x) | -P(x => y) | P(y) # label(MP) # label(non_clause).
+P(((x => y) => (z => y)) => (z => x)) # label(BL1a).
+-P(c5 => ((c5 => c6) => c6)).
+$F.
+P(((x => y) => y) => x) # label(non_clause) # label(goal).
+P((x => y) => ((y => z) => (x => z))) # label(BL1).
+-P(((c3 => c4) => c4) => c3).
+
+% 9 hints from 1 proof(s) in file negation.out, Thu Jun 26 14:20:43 2014
+
+P(x) & P(x => y) -> P(y) # label(MP) # label(non_clause).
+P((x => 0) => 0) -> P(x) # label(non_clause) # label(goal).
+-P(x) | -P(x => y) | P(y) # label(MP) # label(non_clause).
+P((x => y) => ((y => z) => (x => z))) # label(BL1).
+P(((x => y) => (z => y)) => (z => x)) # label(BL1a).
+P((c7 => 0) => 0).
+-P(c7).
+P(((x => y) => y) => x).
+$F.
+
+% 4 hints from 1 proof(s) in file stdin, Thu Jun 26 14:33:35 2014
+
+P((x => 0) ^ (y => 0) => (x => 0)) # label(non_clause) # label(goal).
+P(x ^ y => x) # label(BL2).
+-P((c8 => 0) ^ (c9 => 0) => (c8 => 0)).
+$F.
+
+%% % Manually constructed
+
+%% P((x => 0) ^ (y => 0) => ((((x => 0) => 0) v ((y => 0) => 0)) => 0)) # label(non_clause) # label(goal).
+%% P(x v y => (((x => 0) ^ (y => 0)) => 0)) #label(non_clause).
+%% P(x ^ y => x) # label(BL2).
+%% -P((c8 => 0) ^ (c9 => 0) => (c8 => 0)).
+%% $F.
 
 
 end_of_list.
@@ -147,14 +194,52 @@ formulas(goals).
 %% P(((x => y) => (z => u)) => ((u => z) => (y => x))).
 %% P(((x => 0) => 0) => x).
 
+%% % Double negation - Proved
+%% P(((x => y) => y) => x).
+%% P(x => ((x =>y) => y)).
+
+%P((x => 0) => 0) -> P(x).
+
+% Other properties of join
+
+%P((x => 0) v (y => 0) => (((x => 0) => 0) ^ ((y => 0) => 0) => 0)).
+%P((((x => 0) => 0) ^ ((y => 0) => 0) => 0) => ((x => 0) => 0) ^ (y => 0)).
+
+%P(x ^ ((y => 0) => 0) => x ^ y).
+%P(x => y) -> P(z ^ x => z ^ y).
+%P((x => y) => (z ^ x => z ^ y)).
+
+%P(x ^ y => (((x => 0) v (y => 0)) => 0)).
+%P((((x => 0) v (y => 0) => 0)) => x ^ y).
+
+% Adapted from BAL
+%P(x ^ y => (x ^ y) ^ y).
+
+%P(x ^ y => x)                         # label(BL2).
+
+% Do we need a definition of zero?
+P((x => x) => (y => y)).
+
+% Simple negation of one of our rules
+%P((x => 0) ^ (y => 0) => (x => 0)).
+
+
 % Idempotence of + operator
 %P((x => 0) ^ 0 => ((x => 0) ^0) ^ 0).
 %P((((x => 0) ^0) ^ 0 => 0) => ((x => 0) ^ 0 => 0)).
 %P((((x => 0) ^ 0) v 0 => 0) => x v 0).
 %P((((x => 0) ^ 0) v 0 => 0) => x v 0).
-P(((((x => 0) => 0) v (0 => 0)) => 0) v 0 => 0).
+%P(((((x => 0) => 0) v (0 => 0)) => 0) v 0 => 0).
 
+% A different route
+%P((x ^ y) => (x ^ y) ^ y).
+%P(((x => 0) v (y => 0) => 0) => x ^ y).
+%P(((x => 0) v (y => 0) => 0) => (x ^ y) ^ y).
+%P((x ^ y) ^ y => (((x ^ y) => 0) v (y => 0) => 0)).
+%P((x ^ y) ^ y => ((((x => 0) v (y => 0)) v (y => 0)) => 0)).
+%P( ((x => 0) v (y => 0) => 0) => ((((x => 0) v (y => 0)) v (y => 0)) => 0)).
 
+% Proven with monotonicity of conjunction condition
 %P(((x v 0) v 0) => x v 0).
 
 end_of_list.

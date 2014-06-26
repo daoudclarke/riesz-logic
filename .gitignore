@@ -1,0 +1,9 @@
+*~
+
+*.aux
+*.log
+*.pdf
+*.spl
+*.fdb_latexmk
+
+working/
