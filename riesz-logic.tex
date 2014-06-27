@@ -1,14 +1,18 @@
 % Bismillahi-r-Rahmani-r-Rahim
 % In the Name of God the Merciful, the Compassionate
 
-\documentclass[preprint,3p]{elsarticle}
+\documentclass[preprint,leqno]{elsarticle}
 %\documentclass{article}
 
 \author{Daoud Clarke}
 \date{\today}
 \title{The Logic of Vector Lattices}
 
-\usepackage{times}
+%\usepackage{times}
+%\usepackage{mathptmx}
+%\usepackage{newtxtext,newtxmath}
+
+\usepackage{amsmath}
 
 \begin{document}
 
@@ -17,19 +21,46 @@
 
 \section{Introduction}
 
-In this paper we introduce a logic whose models are lattice
-ordered groups, of which the most familiar examples are the vector
-lattices, or Riesz spaces. Our logic has axioms very similar to those
-of fuzzy logics, in particular Basic Fuzzy Logic (BL), although the
-models are quite different.
-
+We introduce Riesz Logic, a variant of fuzzy logic whose models are
+lattice ordered groups, of which the most familiar examples are vector
+lattices, or Riesz spaces.
+% Our logic has axioms very similar to those
+% of fuzzy logics, in particular Basic Fuzzy Logic (BL), although the
+% models are quite different.
+%
+% % Axioms:
+% % These two together allow proof of first five BAL axioms
+% P((x => y) => ((y => z) => (x => z))) # label(BL1).
+% P(((y => z) => (x => z)) => (x => y)) # label(BL1a).
+%
+% % Needed to prove BALPI and BALPa
+% P(x ^ y => x)                         # label(BL2).
+%
+% % Needed to prove BALO
+% P(x ^ y => y ^ x)                     # label(BL3).
+%
+% % Monotonicity of conjunction
+% P((x => y) => (z ^ x => z ^ y)).
+%
 Our logic has a single derivation rule, modus ponens
-
-and the
-following axioms:
-% \begin{eqnarray}
-
-% \end{eqnarray}
+\begin{equation}\tag{MP}
+\frac{\phi, \phi \rightarrow \psi}{\psi},
+\end{equation}
+the following axioms from Basic Fuzzy Logic:
+\begin{align}
+  \tag{BL1} &(\phi \rightarrow \psi) \rightarrow ((\psi \rightarrow \chi)
+  \rightarrow (\phi \rightarrow \chi))\\
+  \tag{BL2} &\phi \land \psi \rightarrow \phi\\
+  \tag{BL3} &\phi \land \psi \rightarrow \psi \land \phi,
+\end{align}
+and the following new axioms:
+\begin{align}
+  \tag{R1}  &((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow
+  \chi)) \rightarrow (\phi \rightarrow \psi)\\
+  \tag{R2}  &(\phi \rightarrow \psi) \rightarrow (\chi \land \phi
+  \rightarrow \chi \land \psi).
+\end{align}
+In this paper we prove that the models for this logic
 
 %  In particular there is no ``True'' or
 % ``False'' constant, instead there is a zero value which indicates
@@ -39,7 +70,12 @@ following axioms:
 The motivation for our work is recent work in natural language
 processing, in which the meaning of words is determined by the
 contexts in which they occur. This notion of ``distributional
-semantics'' has its origin in the work of Firth and Harris
+semantics'' has its origin in the work of Firth \cite{Firth:57} and
+Harris \cite{Harris:68}.
+
+\bibliographystyle{elsarticle-harv}
+\bibliography{JW2012}
+
 
 \section{Motivation}
 

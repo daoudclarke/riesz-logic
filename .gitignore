@@ -5,5 +5,7 @@
 *.pdf
 *.spl
 *.fdb_latexmk
+*.bbl
+*.blg
 
 working/
