@@ -13,6 +13,15 @@
 %\usepackage{newtxtext,newtxmath}
 
 \usepackage{amsmath}
+\usepackage{stmaryrd}
+\usepackage{cmll}
+%\usepackage{mathabx}
+
+\newdefinition{definition}{Definition}
+\newproof{proof}{Proof}
+
+%\newcommand{\interp}[1]{\ldbrack #1 \rdbrack}
+\newcommand{\interp}[1]{\llbracket #1 \rrbracket}
 
 \begin{document}
 
@@ -22,8 +31,8 @@
 \section{Introduction}
 
 We introduce Riesz Logic, a variant of fuzzy logic whose models are
-lattice ordered groups, of which the most familiar examples are vector
-lattices, or Riesz spaces.
+abelian lattice ordered groups, of which the most familiar examples
+are vector lattices, or Riesz spaces.
 % Our logic has axioms very similar to those
 % of fuzzy logics, in particular Basic Fuzzy Logic (BL), although the
 % models are quite different.
@@ -50,19 +59,20 @@ the following axioms from Basic Fuzzy Logic:
 \begin{align}
   \tag{BL1} &(\phi \rightarrow \psi) \rightarrow ((\psi \rightarrow \chi)
   \rightarrow (\phi \rightarrow \chi))\\
-  \tag{BL2} &\phi \land \psi \rightarrow \phi\\
-  \tag{BL3} &\phi \land \psi \rightarrow \psi \land \phi,
+  \tag{BL2} &\phi \with \psi \rightarrow \phi\\
+  \tag{BL3} &\phi \with \psi \rightarrow \psi \with \phi,
 \end{align}
 and the following new axioms:
 \begin{align}
-  \tag{R1}  &((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow
+  \tag{R1} &((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow
   \chi)) \rightarrow (\phi \rightarrow \psi)\\
-  \tag{R2}  &(\phi \rightarrow \psi) \rightarrow (\chi \land \phi
-  \rightarrow \chi \land \psi).
+  \tag{R2} &(\phi \with \chi \rightarrow \psi) \rightarrow (\phi \rightarrow \psi) \with (\chi \rightarrow \psi).
+  % \tag{R2}  &(\phi \rightarrow \psi) \rightarrow (\chi \with \phi
+  % \rightarrow \chi \with \psi).
 \end{align}
-In this paper we prove that the models for this logic are the lattice
-ordered groups by showing its equivalence to the Logic of Equilibrium
-of \cite{Galli:04}.
+In this paper we prove that the models for this logic are the abelian
+lattice ordered groups by showing its equivalence to the Logic of
+Equilibrium of \cite{Galli:04}.
 
 %  In particular there is no ``True'' or
 % ``False'' constant, instead there is a zero value which indicates
@@ -77,6 +87,77 @@ contexts in which they occur. This notion of ``distributional
 semantics'' has its origin in the work of Firth \cite{Firth:57} and
 Harris \cite{Harris:68}, and the philosophy of Wittgenstein
 \cite{Wittgenstein:53}.
+
+\section{Interpretations}
+
+We prove the soundness and completeness of Riesz logic with respect to
+abelian lattice ordered groups.
+
+\begin{definition}[Lattice Ordered Group]
+  A partially ordered group is a tuple $\langle G, +, \le\rangle$ such
+  that $\langle G, +\rangle$ is a group, and $\le$ is a partial order
+  on $G$ such that if $u \le v$ then $u + w \le v + w$ and $w + u \le
+  w + v$. If $\le$ is a lattice order, then $G$ is called a lattice
+  ordered group. Where there is no confusion, we refer to the lattice
+  ordered group $\langle G, +, \le\rangle$ as simply $G$. We denote
+  the lattice meet and join by $\land$ and $\lor$ respectively.
+\end{definition}
+
+Riesz spaces are abelian lattice ordered groups where the group
+operation is vector space addition, and the vector space zero is the
+unit of the group.
+
+An interpretation $\langle G, F\rangle$ for Riesz Logic
+is an abelian lattice ordered group $G$ and a function $F$ that maps
+variables in Riesz Logic to elements of $G$. A Riesz Logic formula $x$
+has the interpretation $\interp{x}$ defined recursively as follows:
+\begin{itemize}
+\item $\interp{\phi} = F(\phi)$
+\item $\interp{x \rightarrow y} = \interp{y} - \interp{x}$
+\item $\interp{x \with y} = \interp{x} \land \interp{y}$
+\end{itemize}
+The formula $x$ is interpreted as asserting that $0 \le
+\interp{x}$. Thus, for example, the formula $\phi \rightarrow \psi$ is
+interpreted as the assertion $0 \le F(\psi) - F(\phi)$, or $F(\phi)
+\le F(\psi)$. A formula $x$ is satisfiable if there is some
+interpretation such that $0 \le \interp{x}$; it is a theorem or
+tautology if $0 \le \interp{x}$ for all interpretations.
+
+\section{Soundness}
+
+Proving soundness of the logic amounts to proving the validity of the
+rule and axioms.
+
+%\subsection{Modus Ponens}
+
+\begin{proof}[Modus Ponens]
+If $0 \le F(\phi)$ and $0 \le F(\psi) - F(\phi)$ then
+$0 \le F(\psi)$ by transitivity of $\le$.
+\end{proof}
+
+\begin{proof}[BL1 and R1]
+  Since R1 is the converse of BL1, they may be taken together as
+  asserting equality, by the antisymmetry of $\le$. Thus we need to
+  show:
+  \begin{align*}
+    \interp{\phi \rightarrow \psi} & = \interp{(\psi \rightarrow
+      \chi) \rightarrow (\phi \rightarrow \chi)}\\
+    F(\psi) - F(\phi) & = \interp{\phi \rightarrow \chi} -
+    \interp{\psi \rightarrow \chi}\\
+    & = F(\chi) - F(\phi) - F(\chi) + F(\psi)\\
+    & = F(\psi) - F(\phi).
+  \end{align*}
+\end{proof}
+BL2 and BL3 are trivially seen to be properties of the partial
+ordering.
+
+\begin{proof}[R2]
+\begin{align*}
+  \interp{\phi \with \chi \rightarrow \psi} &\le \interp{(\phi \rightarrow \psi) \with (\chi \rightarrow \psi)}\\
+  F(\psi) - F(\phi)\land F(\chi) &\le (F(\psi) - F(\phi)) \land
+  (F(\psi) - F(\chi))
+\end{align*}
+\end{proof}
 
 \section*{References}
 
