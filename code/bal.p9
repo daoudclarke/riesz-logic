@@ -218,7 +218,7 @@ formulas(goals).
 % -------------------------------------------
 
 % Proven with distributive lattice axioms
-%P(((x v 0) v 0) => x v 0) # label(BALPb).
+P(((x v 0) v 0) => x v 0) # label(BALPb).
 
 % Unproven:
 
@@ -241,7 +241,7 @@ formulas(goals).
 %P(x ^ y => y ^ x)                             # label(BL3).
 
 % Property of conjunction
-P(x => y) & P(x => z) -> P(x => y ^ z)        # label(C).
+%P(x => y) & P(x => z) -> P(x => y ^ z)        # label(C).
 %P(x ^ y) -> P(x) & P(y).
 
 % Semilattice:
