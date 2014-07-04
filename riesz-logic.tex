@@ -66,13 +66,16 @@ and the following new axioms:
 \begin{align}
   \tag{R1} &((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow
   \chi)) \rightarrow (\phi \rightarrow \psi)\\
-  \tag{R2} &(\phi \with \chi \rightarrow \psi) \rightarrow (\phi \rightarrow \psi) \with (\chi \rightarrow \psi).
-  % \tag{R2}  &(\phi \rightarrow \psi) \rightarrow (\chi \with \phi
-  % \rightarrow \chi \with \psi).
+  \tag{R2} &\phi \with \psi \rightarrow (\phi \with \psi) \with \psi\\
+  \tag{R3a} &0 \rightarrow (\phi \rightarrow \phi)\\
+  \tag{R3b} &(\phi \rightarrow\phi) \rightarrow 0\\
+  \tag{R4a} &((\phi \rightarrow \psi)\with 0 \rightarrow (\psi \rightarrow \phi) \with 0) \rightarrow (\psi \rightarrow \phi)\\
+  \tag{R4b} & (\psi \rightarrow \phi) \rightarrow ((\phi \rightarrow \psi)\with 0 \rightarrow (\psi \rightarrow \phi) \with 0)
 \end{align}
-In this paper we prove that the models for this logic are the abelian
-lattice ordered groups by showing its equivalence to the Logic of
-Equilibrium of \cite{Galli:04}.
+In this paper we prove the soundness and completeness of this logic
+with respect to abelian lattice ordered groups, with formulas
+interpreted as asserting positivity. In doing this, we relate Riesz
+Logic to the Logic of Equilibrium \cite{Galli:04}.
 
 %  In particular there is no ``True'' or
 % ``False'' constant, instead there is a zero value which indicates

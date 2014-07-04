@@ -8,12 +8,14 @@ formulas(sos).
 
 % Inference rule
 
-P(x) & P(x => y) -> P(y)             # label(MP).
+P(x) & P(x => y) -> P(y)                      # label(MP).
+
+% Property of conjunction
+%P(x => y) & P(x => z) -> P(x => y ^ z)        # label(C).
 
 % Proven inference rules
-P((x => y) => z) & P(u => y) -> P((x => u) =>z). % proven
-P((x => y) => z) & P(x => u) -> P((u => y) =>z). % proven
-
+%P((x => y) => z) & P(u => y) -> P((x => u) =>z). % proven
+%P((x => y) => z) & P(x => u) -> P((u => y) =>z). % proven
 
 % Godel's rule
 %P(x) -> P(x ^ x)                     # label(G).
@@ -21,100 +23,48 @@ P((x => y) => z) & P(x => u) -> P((u => y) =>z). % proven
 % Axioms for Riesz space logic
 
 % These two together allow proof of first five BAL axioms
-P((x => y) => ((y => z) => (x => z))) # label(BL1).
-P(((y => z) => (x => z)) => (x => y)) # label(BL1a).
+P((x => y) => ((y => z) => (x => z)))         # label(BL1).
+P(((y => z) => (x => z)) => (x => y))         # label(R1).
 
 % Needed to prove BALPI and BALPa
-P(x ^ y => x)                         # label(BL2).
+P(x ^ y => x)                                 # label(BL2).
 
 % Needed to prove BALO
-P(x ^ y => y ^ x)                     # label(BL3).
+P(x ^ y => y ^ x)                             # label(BL3).
 
-% Adapted from BAL
-P(x ^ y => (x ^ y) ^ y).
-%P((x => 0) ^ 0 => ((x => 0) ^0) ^ 0).
-%P(((x => 0) ^ 0) ^ 0 => x ^ 0).
+% Adapted from BALP
+P(x ^ y => (x ^ y) ^ y)                       # label(R2).
 
-P((x => y) ^ 0 => ((y => x) v 0 => 0)).
+% Definition of zero
+P(0 => (z => z))                              # label(R3a).
+P((z => z) => 0)                              # label(R3b).
 
+% Adapted from BALO
+P(((x => y) ^ 0 => (y => x) ^ 0) => (y => x)) # label(R4a).
+P((y => x) => ((x => y) ^ 0 => (y => x) ^ 0)) # label(R4b).
 
-P(((x => y) ^ 0 => (y => x) ^ 0) => (y => x)).
-P((y => x) => ((x => y) ^ 0 => (y => x) ^ 0)).
-
-
-% Taken from BAL
-
-%% P(((x v 0) v 0) => x v 0).
-
-%% P(((x => y) v 0 => (y => x) v 0) => (y => x)).
-%% P((y => x) => ((x => y) v 0 => (y => x) v 0)).
-
-
-% Seemingly can't prove these ones:
-%P(x ^ y => (x ^ y) ^ y).
-%P(x => x ^ x).
-%P((z => (x ^ y)) => ((z => x) ^ (z => y))) # label(R1a).
-%P(((z => x) ^ (z => y)) => (z => (x ^ y))) # label(R1b).
-% Negation reverses entailment
-%P(((x => y) => (z => u)) => ((u => z) => (y => x))).
-
-% Lattice-theoretic ------------------------------------
-
-% Associativity
-P(x ^ (y ^ z) => (x ^ y) ^ z).
-P((x ^ y) ^ z => x ^ (y ^ z)).
-
-P(x v (y v z) => (x v y) v z).
-P((x v y) v z => x v (y v z)).
-
-% Commutativity
-P(x v y => y v x).
-
-% Idempotent
-P(x => x ^ x).
-P(x v x => x).
-
-% Absorption
-P(x ^ (x v y) => x).
-P(x v (x ^ y) => x).
-
-% Distributivity
-P(x ^ (y v z) => (x ^ y) v (x ^ z)).
-P((x ^ y) v (x ^ z) => x ^ (y v z)).
-
-P(x v (y ^ z) => (x v y) ^ (x v z)).
-P((x v y) ^ (x v z) => x v (y ^ z)).
-
-% ------------------------------------------------------
-
-%% % Monotonicity of conjunction (UNSOUND)
-%% P((x => y) => (z ^ x => z ^ y)).
+% Semilattice:
+P(x => x ^ x)                                 # label(R5).
+P((x ^ y) ^ z => x ^ (y ^ z))                 # label(R6).
 
 % Distributivity of conjunction
 
-P((x => y ^ z) => (x => y) ^ (x => z)).
-P((x => y) ^ (x => z) => (x => y ^ z)).
+P((x => y ^ z) => (x => y) ^ (x => z))        # label(R7a).
+P((x => y) ^ (x => z) => (x => y ^ z))        # label(R7b).
 
-%% % Lattice-theoretic property
-%P(x => y) -> P(z ^ x => z ^ y).
 
-% Definition of zero
-
-P(0 => (z => z)).
-P((z => z) => 0).
 
 % Definition of join
 
-P(x v y => (((x => 0) ^ (y => 0)) => 0)).
-P((((x => 0) ^ (y => 0) => 0)) => x v y).
+P(x v y => (((x => 0) ^ (y => 0)) => 0)) # label(Ja).
+P((((x => 0) ^ (y => 0) => 0)) => x v y) # label(Jb).
 
-P(x ^ y => (((x => 0) v (y => 0)) => 0)).
-P((((x => 0) v (y => 0) => 0)) => x ^ y).
+%P(x ^ y => (((x => 0) v (y => 0)) => 0)).
+%P((((x => 0) v (y => 0) => 0)) => x ^ y).
 
-
-% old definition:
-%% P(x v y) <-> P( ((x => (z => z)) ^ (y => (v5 => v5))) => (v6 => v6)).
-%% P(x v y) <-> P(((x => 0) ^ (y => 0)) => 0).
+%% % Distributivity
+%% P(x v (y ^ z) => (x v y) ^ (x v z)).
+%% P((x v y) ^ (x v z) => x v (y ^ z)).
 
 end_of_list.
 
@@ -254,26 +204,26 @@ formulas(goals).
 
 % Proven: -----------------------------------
 
-%P((x => y) => ((z => x) => (z => y))). 
-%P(((z => x) => (z => y)) => (x => y)).
+%% P((x => y) => ((z => x) => (z => y))) # label(BALBa). 
+%% P(((z => x) => (z => y)) => (x => y)) # label(BALBb).
 
-%P((x => (y => z)) => (y => (x => z))).
+%% P((x => (y => z)) => (y => (x => z))) # label(BALC).
 
-%P(((x => y) => y) => x).
-%P(x => ((x => y) => y)).
+%% P(((x => y) => y) => x) # label(BALNa).
+%% P(x => ((x => y) => y)) # label(BALNb).
 
-%P(x v 0 => ((x v 0) v 0)) # label(BALPa).
+%% P(x v 0 => ((x v 0) v 0)) # label(BALPa).
 
 
 % -------------------------------------------
 
 % Proven with distributive lattice axioms
-%P(((x v 0) v 0) => x v 0).
+%P(((x v 0) v 0) => x v 0) # label(BALPb).
 
 % Unproven:
 
 
-P(((x => y) v 0 => (y => x) v 0) => (y => x)).
+%P(((x => y) v 0 => (y => x) v 0) => (y => x)).
 %P((y => x) => ((x => y) v 0 => (y => x) v 0)).
 
 % BAL inference rules
@@ -287,6 +237,20 @@ P(((x => y) v 0 => (y => x) v 0) => (y => x)).
 
 % Other goals we are interested in
 
+% Commutativity
+%P(x ^ y => y ^ x)                             # label(BL3).
+
+% Property of conjunction
+P(x => y) & P(x => z) -> P(x => y ^ z)        # label(C).
+%P(x ^ y) -> P(x) & P(y).
+
+% Semilattice:
+%P(x => x ^ x)                                 # label(R5).
+%P(x ^ y => (x ^ y) ^ y).
+%P((x ^ y) ^ z => x ^ (y ^ z))                 # label(R6).
+
+%P(0).
+
 % Extended MP
 
 %P((x => y) => z) & P(u => y) -> P((x => u) =>z). % proven
@@ -298,6 +262,8 @@ P(((x => y) v 0 => (y => x) v 0) => (y => x)).
 %P((((y => x) ^ 0) => 0) => ((x => y) v 0)).
 %P(((x => y) ^ 0 => (((x => y) ^ 0) => 0)) => (y => x)).
 
+% Properties of join
+%P(x => x v y).
 
 % Negation
 %P(((x => y) => 0) => (y => x)).
@@ -306,7 +272,9 @@ P(((x => y) v 0 => (y => x) v 0) => (y => x)).
 % Lattice theoretic - absorption
 %P(x => x ^ x).
 %P(x ^ (x v y) => x).
+%P(x => x ^ (x v y)).
 %P(x v (x ^ y) => x).
+%P(x => x v (x ^ y)).
 
 %% P((z => (x ^ y)) => ((z => x) ^ (z => y))) # label(R1a).
 %% P(x ^ y => (x ^ y) ^ y).
