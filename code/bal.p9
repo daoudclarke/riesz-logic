@@ -11,7 +11,8 @@ formulas(sos).
 P(x) & P(x => y) -> P(y)                      # label(MP).
 
 % Property of conjunction
-%P(x => y) & P(x => z) -> P(x => y ^ z)        # label(C).
+P(x => y) & P(x => z) -> P(x => y ^ z)        # label(C1).
+P(x => y) -> P(x ^ y => x) & P(x => x ^ y)    # label(C2).
 
 % Proven inference rules
 %P((x => y) => z) & P(u => y) -> P((x => u) =>z). % proven
@@ -63,8 +64,8 @@ P((((x => 0) ^ (y => 0) => 0)) => x v y) # label(Jb).
 %P((((x => 0) v (y => 0) => 0)) => x ^ y).
 
 %% % Distributivity
-%% P(x v (y ^ z) => (x v y) ^ (x v z)).
-%% P((x v y) ^ (x v z) => x v (y ^ z)).
+P(x v (y ^ z) => (x v y) ^ (x v z)).
+P((x v y) ^ (x v z) => x v (y ^ z)).
 
 end_of_list.
 
@@ -237,6 +238,8 @@ P(((x v 0) v 0) => x v 0) # label(BALPb).
 
 % Other goals we are interested in
 
+%P(x => y) -> P((y => 0) => (x => 0)).
+
 % Commutativity
 %P(x ^ y => y ^ x)                             # label(BL3).
 
@@ -248,6 +251,8 @@ P(((x v 0) v 0) => x v 0) # label(BALPb).
 %P(x => x ^ x)                                 # label(R5).
 %P(x ^ y => (x ^ y) ^ y).
 %P((x ^ y) ^ z => x ^ (y ^ z))                 # label(R6).
+%P(x ^ y => x) & P(x => x ^ y) -> P(x => y).
+%P(x => y) -> P(x ^ y => x) & P(x => x ^ y).
 
 %P(0).
 
