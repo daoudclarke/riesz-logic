@@ -25,25 +25,25 @@ P(x) & P(x => y) -> P(y)                      # label(MP).
 % Axioms for Riesz space logic
 
 % These two together allow proof of first five BAL axioms
-P((x => y) => ((y => z) => (x => z)))         # label(BL1).
-P(((y => z) => (x => z)) => (x => y))         # label(R1).
+P((x => y) => ((y => z) => (x => z)))         # label(R1a).
+P(((y => z) => (x => z)) => (x => y))         # label(R1a).
 
 % Needed to prove BALPI and BALPa
-P(x => x v y)                                 # label(BL2).
+P(x => x v y)                                 # label(R2).
 
 % Needed to prove BALO
-P(x v y => y v x)                             # label(BL3).
+P(x v y => y v x)                             # label(R3).
 
 %% % Adapted from BALP
-P((x v y) v y => x v y)                       # label(R2).
+P((x v y) v y => x v y)                       # label(R4).
 
 % Definition of zero
-P(0 => (z => z))                              # label(R3a).
-P((z => z) => 0)                              # label(R3b).
+P(0 => (z => z))                              # label(R5a).
+P((z => z) => 0)                              # label(R5b).
 
 %% % Adapted from BALO
-P(((x => y) v 0 => (y => x) v 0) => (y => x)) # label(R4a).
-P((y => x) => ((x => y) v 0 => (y => x) v 0)) # label(R4b).
+P(((x => y) v 0 => (y => x) v 0) => (y => x)) # label(R6a).
+P((y => x) => ((x => y) v 0 => (y => x) v 0)) # label(R6b).
 
 %% % Semilattice:
 %% P(x => x ^ x)                                 # label(R5).

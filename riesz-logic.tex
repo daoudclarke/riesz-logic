@@ -37,40 +37,46 @@ are vector lattices, or Riesz spaces.
 % of fuzzy logics, in particular Basic Fuzzy Logic (BL), although the
 % models are quite different.
 %
-% % Axioms:
+
 % % These two together allow proof of first five BAL axioms
-% P((x => y) => ((y => z) => (x => z))) # label(BL1).
-% P(((y => z) => (x => z)) => (x => y)) # label(BL1a).
-%
+% P((x => y) => ((y => z) => (x => z)))         # label(R1).
+% P(((y => z) => (x => z)) => (x => y))         # label(R2).
+
 % % Needed to prove BALPI and BALPa
-% P(x ^ y => x)                         # label(BL2).
-%
+% P(x => x v y)                                 # label(R3).
+
 % % Needed to prove BALO
-% P(x ^ y => y ^ x)                     # label(BL3).
-%
-% % Monotonicity of conjunction
-% P((x => y) => (z ^ x => z ^ y)).
+% P(x v y => y v x)                             # label(R4).
+
+% %% % Adapted from BALP
+% P((x v y) v y => x v y)                       # label(R5).
+
+% % Definition of zero
+% P(0 => (z => z))                              # label(R6a).
+% P((z => z) => 0)                              # label(R6b).
+
+% %% % Adapted from BALO
+% P(((x => y) v 0 => (y => x) v 0) => (y => x)) # label(R7a).
+% P((y => x) => ((x => y) v 0 => (y => x) v 0)) # label(R7b).
+
 %
 Our logic has a single derivation rule, modus ponens
 \begin{equation}\tag{MP}
 \frac{\phi, \phi \rightarrow \psi}{\psi},
 \end{equation}
-the following axioms from Basic Fuzzy Logic:
+and the following axioms:
 \begin{align}
-  \tag{BL1} &(\phi \rightarrow \psi) \rightarrow ((\psi \rightarrow \chi)
+  \tag{R1a} &(\phi \rightarrow \psi) \rightarrow ((\psi \rightarrow \chi)
   \rightarrow (\phi \rightarrow \chi))\\
-  \tag{BL2} &\phi \with \psi \rightarrow \phi\\
-  \tag{BL3} &\phi \with \psi \rightarrow \psi \with \phi,
-\end{align}
-and the following new axioms:
-\begin{align}
-  \tag{R1} &((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow
+  \tag{R1a} &((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow
   \chi)) \rightarrow (\phi \rightarrow \psi)\\
-  \tag{R2} &\phi \with \psi \rightarrow (\phi \with \psi) \with \psi\\
-  \tag{R3a} &0 \rightarrow (\phi \rightarrow \phi)\\
-  \tag{R3b} &(\phi \rightarrow\phi) \rightarrow 0\\
-  \tag{R4a} &((\phi \rightarrow \psi)\with 0 \rightarrow (\psi \rightarrow \phi) \with 0) \rightarrow (\psi \rightarrow \phi)\\
-  \tag{R4b} & (\psi \rightarrow \phi) \rightarrow ((\phi \rightarrow \psi)\with 0 \rightarrow (\psi \rightarrow \phi) \with 0)
+  \tag{R2} &\phi \rightarrow \phi \lor \psi\\
+  \tag{R3} &\phi \lor \psi \rightarrow \psi \lor \phi,\\
+  \tag{R4} &(\phi \lor \psi)\lor \psi \rightarrow \phi \lor \psi\\
+  \tag{R5a} &0 \rightarrow (\phi \rightarrow \phi)\\
+  \tag{R5b} &(\phi \rightarrow\phi) \rightarrow 0\\
+  \tag{R6a} &((\phi \rightarrow \psi)\lor 0 \rightarrow (\psi \rightarrow \phi) \lor 0) \rightarrow (\psi \rightarrow \phi)\\
+  \tag{R6b} & (\psi \rightarrow \phi) \rightarrow ((\phi \rightarrow \psi)\lor 0 \rightarrow (\psi \rightarrow \phi) \lor 0)
 \end{align}
 In this paper we prove the soundness and completeness of this logic
 with respect to abelian lattice ordered groups, with formulas
