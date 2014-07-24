@@ -26,7 +26,7 @@ P(x) & P(x => y) -> P(y)                      # label(MP).
 
 % These two together allow proof of first five BAL axioms
 P((x => y) => ((y => z) => (x => z)))         # label(R1a).
-P(((y => z) => (x => z)) => (x => y))         # label(R1a).
+P(((y => z) => (x => z)) => (x => y))         # label(R1b).
 
 % Needed to prove BALPI and BALPa
 P(x => x v y)                                 # label(R2).
