@@ -30,9 +30,9 @@
 
 \section{Introduction}
 
-We introduce Riesz Logic, a variant of fuzzy logic whose models are
-abelian lattice ordered groups, of which the most familiar examples
-are vector lattices, or Riesz spaces.
+We introduce Riesz Logic (RL), a variant of fuzzy logic whose models
+are abelian lattice ordered groups, of which the most familiar
+examples are vector lattices, or Riesz spaces.
 % Our logic has axioms very similar to those
 % of fuzzy logics, in particular Basic Fuzzy Logic (BL), although the
 % models are quite different.
@@ -60,7 +60,7 @@ are vector lattices, or Riesz spaces.
 % P((y => x) => ((x => y) v 0 => (y => x) v 0)) # label(R7b).
 
 %
-Our logic has a single derivation rule, modus ponens
+RL has a single derivation rule, modus ponens
 \begin{equation}\tag{MP}
 \frac{\phi, \phi \rightarrow \psi}{\psi},
 \end{equation}
@@ -80,8 +80,8 @@ and the following axioms:
 \end{align}
 In this paper we prove the soundness and completeness of this logic
 with respect to abelian lattice ordered groups, with formulas
-interpreted as asserting positivity. In doing this, we relate Riesz
-Logic to the Logic of Equilibrium \cite{Galli:04}.
+interpreted as asserting positivity. In doing this, we relate RL to
+the Logic of Equilibrium, known as BAL \cite{Galli:04}.
 
 %  In particular there is no ``True'' or
 % ``False'' constant, instead there is a zero value which indicates
@@ -99,7 +99,7 @@ Harris \cite{Harris:68}, and the philosophy of Wittgenstein
 
 \section{Interpretations}
 
-We prove the soundness and completeness of Riesz logic with respect to
+We prove the soundness and completeness of RL with respect to
 abelian lattice ordered groups.
 
 \begin{definition}[Lattice Ordered Group]
@@ -116,14 +116,14 @@ Riesz spaces are abelian lattice ordered groups where the group
 operation is vector space addition, and the vector space zero is the
 unit of the group.
 
-An interpretation $\langle G, F\rangle$ for Riesz Logic
-is an abelian lattice ordered group $G$ and a function $F$ that maps
-variables in Riesz Logic to elements of $G$. A Riesz Logic formula $x$
-has the interpretation $\interp{x}$ defined recursively as follows:
+An interpretation $\langle G, F\rangle$ for RL is an abelian lattice
+ordered group $G$ and a function $F$ that maps variables in RL to
+elements of $G$. A formula $x$ has the interpretation $\interp{x}$
+defined recursively as follows:
 \begin{itemize}
 \item $\interp{\phi} = F(\phi)$
 \item $\interp{x \rightarrow y} = \interp{y} - \interp{x}$
-\item $\interp{x \with y} = \interp{x} \land \interp{y}$
+\item $\interp{x \lor y} = \interp{x} \lor \interp{y}$
 \end{itemize}
 The formula $x$ is interpreted as asserting that $0 \le
 \interp{x}$. Thus, for example, the formula $\phi \rightarrow \psi$ is
@@ -144,8 +144,8 @@ If $0 \le F(\phi)$ and $0 \le F(\psi) - F(\phi)$ then
 $0 \le F(\psi)$ by transitivity of $\le$.
 \end{proof}
 
-\begin{proof}[BL1 and R1]
-  Since R1 is the converse of BL1, they may be taken together as
+\begin{proof}[R1]
+  Since R1a is the converse of R1b, they may be taken together as
   asserting equality, by the antisymmetry of $\le$. Thus we need to
   show:
   \begin{align*}
@@ -157,16 +157,69 @@ $0 \le F(\psi)$ by transitivity of $\le$.
     & = F(\psi) - F(\phi).
   \end{align*}
 \end{proof}
-BL2 and BL3 are trivially seen to be properties of the partial
-ordering.
+R2--4 are trivially seen to be properties of the partial ordering. R5
+defines the symbol 0 such that $\interp{0}$ is the identity of the
+group, which we also denote 0.
 
-\begin{proof}[R2]
+\begin{proof}[R6]
 \begin{align*}
-  \interp{\phi \with \chi \rightarrow \psi} &\le \interp{(\phi \rightarrow \psi) \with (\chi \rightarrow \psi)}\\
-  F(\psi) - F(\phi)\land F(\chi) &\le (F(\psi) - F(\phi)) \land
-  (F(\psi) - F(\chi))
+  \interp{(\phi \rightarrow \psi)\lor 0 \rightarrow (\psi \rightarrow \phi) \lor 0} &= \interp{\psi \rightarrow \phi}\\
+  \interp{(\psi \rightarrow \phi) \lor 0} - \interp{(\phi \rightarrow \psi)\lor 0} &= F(\phi) - F(\psi)\\
+  (F(\phi) - F(\psi))^+ - (F(\phi) - F(\psi))^- & =F(\phi) - F(\psi)
 \end{align*}
+where $x^+ = x\lor 0$ and $x^- = (-x)\lor 0$ are the positive and
+negative parts of $x$ respectively. The identity $x = x^+ - x^-$ is
+well known for lattice ordered groups, and can be shown by $x + x^- =
+x + (-x)\lor 0 = (x - x)\lor(x + 0) = 0\lor x = x^+$.
 \end{proof}
+
+\section{Completeness}
+
+We show completeness by relating RL to the Logic of
+Equilibrium \cite{Galli:04}. The semantics of this logic is also
+lattice ordered groups, but a statement is interpreted as stating
+equality with zero. The logic has the primitive binary
+operation $\rightarrow$ and unary operation ${}^+$. The former is
+interpreted as in RL and the latter has the interpretation
+$\interp{x^+} = \interp{x}^+$, i.e.~it maps elements to their positive
+parts. Thus the statement $\phi \rightarrow \psi$ in the Logic of
+Equilibrium is interpreted as an assertion that $F(\psi) - F(\phi) = 0$ or
+$F(\phi) = F(\psi)$. The logic has the following axioms:
+\begin{align}
+  \tag{BALB} &(\phi \rightarrow \psi) \rightarrow ((\chi \rightarrow \phi)
+  \rightarrow (\chi \rightarrow \psi))\\
+  \tag{BALC} &(\phi \rightarrow (\psi \rightarrow \chi)) \rightarrow
+  (\psi \rightarrow (\phi \rightarrow \chi))\\
+  \tag{BALN} &((\phi \rightarrow \psi) \rightarrow \psi) \rightarrow
+  \phi\\
+  \tag{BALP} &\phi^{++} \rightarrow\phi^+\\
+  \tag{BALO} &((\psi\rightarrow\phi)^+
+  \rightarrow(\phi\rightarrow\psi)^+)\rightarrow
+  (\phi\rightarrow\psi)
+\end{align}
+and the following inference rules:\\
+\begin{minipage}{0.49\textwidth}
+\begin{gather}
+  \tag{MP} \frac{\phi, \phi \rightarrow \psi}{\psi},\\
+  \tag{PI} \frac{\phi}{\phi^+},
+\end{gather}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+\begin{gather}
+  \tag{G} \frac{\phi, \psi}{\phi \rightarrow \psi},\\
+  \tag{MI} \frac{(\phi\rightarrow\psi)^+}{(\phi^+\rightarrow\psi^+)^+}.
+\end{gather}
+\end{minipage}
+\vspace{0.3cm}\\
+Note that the logic has the same expressive power as RL: a
+statement $x$ in the Logic of Equilibrium is equivalent to two
+statements, $x$ and $x\rightarrow 0$ in Riesz Logic. Conversely, the
+statement $x$ in Riesz Logic is equivalent to the statement
+$(x\rightarrow 0)^+$ in the Logic of Equilibrium: this is asserting
+that the negative part of $x$ is zero, which is the same as
+asserting that $x$ itself is positive.
+
+
 
 \section*{References}
 
