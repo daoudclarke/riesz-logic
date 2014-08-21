@@ -239,7 +239,23 @@ proof of completeness is thus in three parts:
 
 \subsection{Inference Rules}
 
-We leave Modus Ponens as it is an axiom of both RL and BAL. 
+Premises in BAL inference rules are stronger statements than in RL
+since they are interpreted as asserting equality. Similarly, we need
+to deduce two conclusions in RL for each conclusion in a BAL inference
+rule in order to assert equality in RL. Specifically, given a BAL
+inference rule
+$$\frac{\phi_1,\phi_2,\ldots}{\psi},$$
+we need the following inference rules in RL:
+$$\frac{\phi_1,\phi_2,\ldots, \phi_1\rightarrow 0, \phi_2\rightarrow
+  0, \ldots}{\psi}\text{ and }\frac{\phi_1,\phi_2,\ldots,
+  \phi_1\rightarrow 0, \phi_2\rightarrow 0, \ldots}{\psi \rightarrow
+  0}.$$
+For each rule BALR in BAL, we will refer to these two versions as
+BALR+ and BALR$-$ respectively.
+
+\begin{proof}[MP]
+MP+ follows trivially from the assumption of the rule MP in RL.
+\end{proof}
 
 %% 1 P(x) & P(x => y) -> P(y) # label(MP) # label(non_clause).
 %% [assumption].
