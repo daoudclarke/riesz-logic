@@ -4,6 +4,9 @@ assign(max_seconds, 30).
 
 op(600, infix, "=>"). % Riesz space implication
 
+assign(max_weight, 40).
+assign(max_vars,5).
+assign(not_weight, 100).
 
 formulas(sos).
 
@@ -79,10 +82,35 @@ P((y => x) => ((x => y) v 0 => (y => x) v 0)) # label(R6b).
 %% P(x v (y ^ z) => (x v y) ^ (x v z)).
 %% P((x v y) ^ (x v z) => x v (y ^ z)).
 
+% New method for inference rules
+
+P(a).
+P(a => 0).
+P(a => b).
+P((a => b) => 0).
+
 end_of_list.
 
+%% formulas(hints).
 
-% set(restrict_denials).
+%% P(x) & P(x => y) -> P(y)                      # label(MP).
+%% P(x => y) -> P(x v z => y v z)                # label(RI).
+%% P((x => y) => ((y => z) => (x => z)))         # label(R1a).
+%% P(((y => z) => (x => z)) => (x => y))         # label(R1b).
+%% P(x => x v y)                                 # label(R2).
+%% P(x v y => y v x)                             # label(R3).
+%% P((x v y) v y => x v y)                       # label(R4).
+%% P(0 => (z => z))                              # label(R5a).
+%% P((z => z) => 0)                              # label(R5b).
+%% P(((x => y) v 0 => (y => x) v 0) => (y => x)) # label(R6a).
+%% P((y => x) => ((x => y) v 0 => (y => x) v 0)) # label(R6b).
+%% P(a).
+%% P(a => 0).
+%% P(a => b).
+%% P((a => b) => 0).
+%% P(b => 0)  # label(BALMP).
+
+%% end_of_list.
 
 formulas(goals).
 
@@ -128,12 +156,16 @@ formulas(goals).
 %P(x => y) -> P(x v z => y v z).
 %(P(x) -> P(y)) -> (P(x => 0) -> P(y => 0)).
 
+% New proof method for inference rules
+
+P(b => 0)  # label(BALMP).
+
 % Proven:
 
 %P(x) -> P(x v 0) # label(BALPI).
 
 % P(x) & P(x => y) -> P(y)                                     # label(MP).     % Assumed
-% P(x) & P(x => 0) & P(x => y) & P(y => x) -> P(y) & P(y => 0) # label(MP).
+%P(x) & P(x => 0) & P(x => y) & P((x => y) => 0) -> P(y) & P(y => 0) # label(BALMP).
 % P((x => y) v 0) -> P((x v 0 => y v 0) v 0)                   # label(BALMI).
 %P((x => y) v 0) & P((x => y) v 0 => 0) -> P((x v 0 => y v 0) v 0) & P((x v 0 => y v 0) v 0 => 0)        # label(BALMI).
 %P(y => x) -> P((x v 0 => y v 0) v 0 => 0)        # label(BALMI).
