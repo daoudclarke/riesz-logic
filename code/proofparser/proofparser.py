@@ -35,7 +35,7 @@ class LeftBracketToken(Token):
     def nud(self):
         expr = self.parser.expression()
         self.parser.advance(")")
-        return expr
+        return tuple(expr)
 
 class ProofParser(object):
     def __init__(self):
