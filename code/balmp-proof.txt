@@ -1,0 +1,60 @@
+%% % Using inference style
+
+%% 1 P(x) & P(x => y) -> P(y) # label(MP) # label(non_clause).  [assumption].
+%% 5 P(x) & P(x => 0) & P(x => y) & P((x => y) => 0) -> P(y) & P(y => 0) # label(BALMP) # label(non_clause) # label(goal).  [goal].
+%% 6 -P(x) | -P(x => y) | P(y) # label(MP).  [clausify(1)].
+%% 8 P((x => y) => ((y => z) => (x => z))) # label(R1a).  [assumption].
+%% 9 P(((x => y) => (z => y)) => (z => x)) # label(R1b).  [assumption].
+%% 13 P(0 => (x => x)) # label(R5a).  [assumption].
+%% 21 P(c1) # label(BALMP).  [deny(5)].
+%% 22 P(c1 => 0) # label(BALMP).  [deny(5)].
+%% 23 P(c1 => c2) # label(BALMP).  [deny(5)].
+%% 24 P((c1 => c2) => 0) # label(BALMP).  [deny(5)].
+%% 25 -P(c2) | -P(c2 => 0) # label(BALMP) # answer(BALMP).  [deny(5)].
+%% 85 P(c2).  [ur(6,a,21,a,b,23,a)].
+%% 89 -P(c2 => 0) # answer(BALMP).  [back_unit_del(25),unit_del(a,85)].
+%% 93 P((0 => x) => ((c1 => c2) => x)).  [ur(6,a,24,a,b,8,a)].
+%% 104 -P((c1 => 0) => (c2 => 0)) # answer(BALMP).  [ur(6,a,22,a,c,89,a)].
+%% 380 -P(c2 => c1) # answer(BALMP).  [ur(6,b,8,a,c,104,a)].
+%% 411 -P((c1 => x) => (c2 => x)) # answer(BALMP).  [ur(6,b,9,a,c,380,a)].
+%% 6205 -P((0 => (x => x)) => ((c1 => y) => (c2 => y))) # answer(BALMP).  [ur(6,a,13,a,c,411,a)].
+%% 6206 $F # answer(BALMP).  [resolve(6205,a,93,a)].
+
+%% % Simplified method
+
+%% 1 P(x) & P(x => y) -> P(y) # label(MP) # label(non_clause).  [assumption].
+%% 5 P(b => 0) # label(BALMP) # label(non_clause) # label(goal).  [goal].
+%% 6 -P(x) | -P(x => y) | P(y) # label(MP).  [clausify(1)].
+%% 8 P((x => y) => ((y => z) => (x => z))) # label(R1a).  [assumption].
+%% 9 P(((x => y) => (z => y)) => (z => x)) # label(R1b).  [assumption].
+%% 13 P(0 => (x => x)) # label(R5a).  [assumption].
+%% 18 P(a => 0).  [assumption].
+%% 20 P((a => b) => 0).  [assumption].
+%% 21 -P(b => 0) # label(BALMP) # answer(BALMP).  [deny(5)].
+%% 74 P((0 => x) => ((a => b) => x)).  [ur(6,a,20,a,b,8,a)].
+%% 80 -P((a => 0) => (b => 0)) # answer(BALMP).  [ur(6,a,18,a,c,21,a)].
+%% 234 -P(b => a) # answer(BALMP).  [ur(6,b,8,a,c,80,a)].
+%% 256 -P((a => x) => (b => x)) # answer(BALMP).  [ur(6,b,9,a,c,234,a)].
+%% 1162 -P((0 => (x => x)) => ((a => y) => (b => y))) # answer(BALMP).  [ur(6,a,13,a,c,256,a)].
+%% 1163 $F # answer(BALMP).  [resolve(1162,a,74,a)].
+
+%% % Weighted negation
+
+1 P(x) & P(x => y) -> P(y) # label(MP) # label(non_clause).  [assumption].
+3 P(b => 0) # label(BALMP) # label(non_clause) # label(goal).  [goal].
+4 -P(x) | -P(x => y) | P(y) # label(MP).  [clausify(1)].
+6 P((x => y) => ((y => z) => (x => z))) # label(R1a).  [assumption].
+7 P(((x => y) => (z => y)) => (z => x)) # label(R1b).  [assumption].
+11 P(0 => (x => x)) # label(R5a).  [assumption].
+16 P(a => 0).  [assumption].
+18 P((a => b) => 0).  [assumption].
+19 -P(b => 0) # label(BALMP) # answer(BALMP).  [deny(3)].
+21 P((((x => y) => (z => y)) => u) => ((z => x) => u)).  [ur(4,a,6,a,b,6,a)].
+23 P(x => ((x => y) => y)).  [ur(4,a,7,a,b,7,a)].
+72 P((0 => x) => ((a => b) => x)).  [ur(4,a,18,a,b,6,a)].
+129 P(((a => 0) => x) => x).  [ur(4,a,16,a,b,23,a)].
+459 P((x => a) => (x => 0)).  [ur(4,a,129,a,b,21,a)].
+1616 P((a => b) => (x => x)).  [ur(4,a,11,a,b,72,a)].
+3263 P(b => a).  [ur(4,a,1616,a,b,7,a)].
+3266 P(b => 0).  [ur(4,a,3263,a,b,459,a)].
+3267 $F # answer(BALMP).  [resolve(3266,a,19,a)].
