@@ -70,7 +70,8 @@ def to_latex(interpretation):
         'b': r'\beta',
         'x': r'\phi',
         'y': r'\psi',
-        'z': r'\chi'
+        'z': r'\chi',
+        'u': r'\omega',
         }
     for number, line, uses_labels in interpretation:
         new_line = ''
