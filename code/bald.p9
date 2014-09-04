@@ -90,9 +90,15 @@ P((y => x) => ((x => y) v 0 => (y => x) v 0)) # label(R6b).
 %% P(a => b).
 %% P((a => b) => 0).
 
-%% % BALPI-
+%% %% % BALPI-
+%% P(a => 0).
+
+% BALG+
+P(a).
 P(a => 0).
-%% P(a).
+P(b).
+P(b => 0).
+
 
 end_of_list.
 
@@ -166,7 +172,8 @@ formulas(goals).
 
 
 %% P(b => 0)  # label(BALMP).
-P(a v 0 => 0) # label(BALPI).
+%% P(a v 0 => 0) # label(BALPI).
+P(a => b) # label(BALG1).
 
 % Proven:
 
