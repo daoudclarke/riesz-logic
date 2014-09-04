@@ -1,4 +1,8 @@
 *~
+.#*
+
+*__pycache__*
+*.pyc
 
 *.aux
 *.log
@@ -7,5 +11,6 @@
 *.fdb_latexmk
 *.bbl
 *.blg
+*.dvi
 
 working/
