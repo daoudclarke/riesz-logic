@@ -72,6 +72,7 @@ def to_latex(interpretation):
         'y': r'\psi',
         'z': r'\chi',
         'u': r'\omega',
+        'v': r'\lor',
         }
     for number, line, uses_labels in interpretation:
         new_line = ''
