@@ -4,9 +4,9 @@ assign(max_seconds, 30).
 
 op(600, infix, "=>"). % Riesz space implication
 
-assign(max_weight, 40).
-assign(max_vars,5).
-assign(not_weight, 100).
+%% assign(max_weight, 40).
+%% assign(max_vars,5).
+%% assign(not_weight, 100).
 
 formulas(sos).
 
@@ -84,10 +84,15 @@ P((y => x) => ((x => y) v 0 => (y => x) v 0)) # label(R6b).
 
 % New method for inference rules
 
-P(a).
-P(a => 0).
-P(a => b).
-P((a => b) => 0).
+%% % BALMP-
+%% P(a).
+%% P(a => 0).
+%% P(a => b).
+%% P((a => b) => 0).
+
+%% % BALPI-
+%% P(a => 0).
+%% P(a).
 
 end_of_list.
 
@@ -153,16 +158,20 @@ formulas(goals).
 
 %P(x) & P(x => 0) -> P(x v 0) & P(x v 0 => 0) # label(BALPI).
 %P(x => 0) -> P(x v 0 => 0) # label(BALPI).
+%P(x => 0) & P(x) -> P(x v 0 => 0) #label(BALPI). 
 %P(x => y) -> P(x v z => y v z).
 %(P(x) -> P(y)) -> (P(x => 0) -> P(y => 0)).
 
 % New proof method for inference rules
 
-P(b => 0)  # label(BALMP).
+
+%% P(b => 0)  # label(BALMP).
+%% P(a v 0 => 0) # label(BALPI).
 
 % Proven:
 
 %P(x) -> P(x v 0) # label(BALPI).
+P(x => 0) -> P(x v 0 => 0) #label(BALPI). 
 
 % P(x) & P(x => y) -> P(y)                                     # label(MP).     % Assumed
 %P(x) & P(x => 0) & P(x => y) & P((x => y) => 0) -> P(y) & P(y => 0) # label(BALMP).
