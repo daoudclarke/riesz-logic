@@ -1,5 +1,5 @@
 % Our own version of BAL logic, using disjunction as the basis
-assign(max_seconds, 240).
+assign(max_seconds, 30).
 
 
 op(600, infix, "=>"). % Riesz space implication
@@ -100,7 +100,7 @@ P((y => x) => ((x => y) v 0 => (y => x) v 0)) # label(R6b).
 %% P(b => 0).
 
 % BALMI
-P((a => b) v 0).
+% P((a => b) v 0).
 P(((a => b) v 0) => 0).
 
 
@@ -179,7 +179,11 @@ formulas(goals).
 %% P(a v 0 => 0) # label(BALPI).
 %% P(a => b) # label(BALG1).
 %% P((a => b) => 0) # label(BALG2).
-P(((a v 0) => (b v 0)) v 0).
+%% P(((a v 0) => (b v 0)) v 0) # label(BALMI1).
+%% P(((a v 0) => (b v 0)) v 0 => 0) # label(BALMI2).
+
+% BALMI part 1
+P(b => a).
 
 % Proven:
 
@@ -189,13 +193,16 @@ P(((a v 0) => (b v 0)) v 0).
 % P(x) & P(x => y) -> P(y)                                     # label(MP).     % Assumed
 %P(x) & P(x => 0) & P(x => y) & P((x => y) => 0) -> P(y) & P(y => 0) # label(BALMP).
 % P((x => y) v 0) -> P((x v 0 => y v 0) v 0)                   # label(BALMI).
-%P((x => y) v 0) & P((x => y) v 0 => 0) -> P((x v 0 => y v 0) v 0) & P((x v 0 => y v 0) v 0 => 0)        # label(BALMI).
-%P(y => x) -> P((x v 0 => y v 0) v 0 => 0)        # label(BALMI).
+% P((x => y) v 0) & P((x => y) v 0 => 0) -> P((x v 0 => y v 0) v 0) & P((x v 0 => y v 0) v 0 => 0)        # label(BALMI).
+% P(y => x) -> P((x v 0 => y v 0) v 0 => 0)        # label(BALMI).
 % Simplified using x => 0 implies x v 0 => 0 (proven)
 %P(y => x) -> P((x v 0 => y v 0) => 0)        # label(BALMI).
 %P((x => y) v 0 => 0) -> P((x v 0 => y v 0) v 0 => 0)        # label(BALMI).
 %P(x => y) -> P(x v 0 => y v 0)                               #label(BALMI).
 % P(x) & P(x => 0) & P(y) & P(y => 0) -> P(x => y) & P(y => x) # label(BALG).
+
+% Towards BALMI (proven)
+% P((x => y) v 0 => 0) -> P(y => x).
 
 % Other goals we are interested in
 
