@@ -1,0 +1,21 @@
+\tag{1} & \phi \rightarrow ((\phi \rightarrow \psi) \rightarrow \psi) & \text{(MP, R1b, R1b)}\\
+\tag{2} & \phi \lor \psi \rightarrow (\phi \lor \chi) \lor \psi & \text{(RI, R2)}\\
+\tag{3} & (\phi \lor \psi) \lor \chi \rightarrow (\psi \lor \phi) \lor \chi & \text{(RI, R3)}\\
+\tag{4} & (\phi \lor \psi \rightarrow \chi) \rightarrow (\psi \lor \phi \rightarrow \chi) & \text{(MP, R3, R1a)}\\
+\tag{5} & (\phi \lor \psi \rightarrow \chi) \rightarrow ((\phi \lor \psi) \lor \psi \rightarrow \chi) & \text{(MP, R4, R1a)}\\
+\tag{6} & 0 & \text{(MP, R3, R5b)}\\
+\tag{7} & ((\phi \rightarrow \psi) \rightarrow \chi) \rightarrow (((\psi \rightarrow \phi) \lor 0 \rightarrow (\phi \rightarrow \psi) \lor 0) \rightarrow \chi) & \text{(MP, R6a, R1a)}\\
+\tag{8} & (\alpha \lor 0 \rightarrow \beta \lor 0) \lor \phi \rightarrow 0 \lor \phi & \text{(RI, BALMI2b)}\\
+\tag{9} & (0 \rightarrow \phi) \rightarrow \phi & \text{(MP, 6, 1)}\\
+\tag{10} & (0 \rightarrow \phi) \lor \psi \rightarrow \phi \lor \psi & \text{(RI, 9)}\\
+\tag{11} & ((\phi \lor \psi) \lor \chi \rightarrow \omega) \rightarrow (\phi \lor \chi \rightarrow \omega) & \text{(MP, 2, R1a)}\\
+\tag{12} & ((\phi \lor \psi) \lor \chi \rightarrow \omega) \rightarrow ((\psi \lor \phi) \lor \chi \rightarrow \omega) & \text{(MP, 3, R1a)}\\
+\tag{13} & (\phi \lor \psi \rightarrow \chi) \rightarrow ((0 \rightarrow \phi) \lor \psi \rightarrow \chi) & \text{(MP, 10, R1a)}\\
+\tag{14} & ((\phi \rightarrow \psi \lor \chi) \lor 0 \rightarrow (\psi \lor \chi \rightarrow \phi) \lor 0) \rightarrow (\chi \lor \psi \rightarrow \phi) & \text{(MP, 4, 7)}\\
+\tag{15} & (0 \lor \phi \rightarrow \psi) \rightarrow ((\alpha \lor 0 \rightarrow \beta \lor 0) \lor \phi \rightarrow \psi) & \text{(MP, 8, R1a)}\\
+\tag{16} & (\phi \lor \psi) \lor \phi \rightarrow \psi \lor \phi & \text{(MP, R4, 12)}\\
+\tag{17} & \phi \lor \phi \rightarrow \psi \lor \phi & \text{(MP, 16, 11)}\\
+\tag{18} & (\phi \lor \phi) \lor \phi \rightarrow \psi \lor \phi & \text{(MP, 17, 5)}\\
+\tag{19} & (0 \rightarrow \phi \lor \phi) \lor \phi \rightarrow \psi \lor \phi & \text{(MP, 18, 13)}\\
+\tag{20} & 0 \lor 0 \rightarrow 0 & \text{(MP, 19, 14)}\\
+\tag{21} & (\alpha \lor 0 \rightarrow \beta \lor 0) \lor 0 \rightarrow 0 & \text{(MP, 20, 15)}\\

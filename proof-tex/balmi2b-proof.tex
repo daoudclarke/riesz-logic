@@ -1,0 +1,8 @@
+\tag{1} & \beta \rightarrow \alpha & \text{(assumption)}\\
+\tag{2} & (((\phi \rightarrow \psi) \rightarrow (\chi \rightarrow \psi)) \rightarrow \omega) \rightarrow ((\chi \rightarrow \phi) \rightarrow \omega) & \text{(MP, R1a, R1a)}\\
+\tag{3} & \phi \rightarrow ((\phi \rightarrow \psi) \rightarrow \psi) & \text{(MP, R1b, R1b)}\\
+\tag{4} & \beta \lor \phi \rightarrow \alpha \lor \phi & \text{(RI, 1)}\\
+\tag{5} & (((\phi \rightarrow \phi) \rightarrow 0) \rightarrow \psi) \rightarrow \psi & \text{(MP, R5b, 3)}\\
+\tag{6} & (\alpha \lor \phi \rightarrow \psi) \rightarrow (\beta \lor \phi \rightarrow \psi) & \text{(MP, 4, R1a)}\\
+\tag{7} & (\phi \rightarrow (\psi \rightarrow \psi)) \rightarrow (\phi \rightarrow 0) & \text{(MP, 5, 2)}\\
+\tag{8} & (\alpha \lor \phi \rightarrow \beta \lor \phi) \rightarrow 0 & \text{(MP, 6, 7)}\\

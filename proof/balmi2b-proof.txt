@@ -1,0 +1,18 @@
+1 P(x) & P(x => y) -> P(y) # label(MP) # label(non_clause).  [assumption].
+2 P(x => y) -> P(x v z => y v z) # label(RI) # label(non_clause).  [assumption].
+3 P((a v 0 => b v 0) => 0) # label(BALMI2) # label(non_clause) # label(goal).  [goal].
+4 -P(x) | -P(x => y) | P(y) # label(MP).  [clausify(1)].
+5 -P(x => y) | P(x v z => y v z) # label(RI).  [clausify(2)].
+6 P((x => y) => ((y => z) => (x => z))) # label(R1a).  [assumption].
+7 P(((x => y) => (z => y)) => (z => x)) # label(R1b).  [assumption].
+12 P((x => x) => 0) # label(R5b).  [assumption].
+15 P(b => a).  [assumption].
+16 -P((a v 0 => b v 0) => 0) # label(BALMI2) # answer(BALMI2).  [deny(3)].
+18 P((((x => y) => (z => y)) => u) => ((z => x) => u)).  [ur(4,a,6,a,b,6,a)].
+20 P(x => ((x => y) => y)).  [ur(4,a,7,a,b,7,a)].
+56 P(b v x => a v x).  [ur(5,a,15,a)].
+115 P((((x => x) => 0) => y) => y).  [ur(4,a,12,a,b,20,a)].
+168 P((a v x => y) => (b v x => y)).  [ur(4,a,56,a,b,6,a)].
+1026 P((x => (y => y)) => (x => 0)).  [ur(4,a,115,a,b,18,a)].
+9121 P((a v x => b v x) => 0).  [ur(4,a,168,a,b,1026,a)].
+9122 $F # answer(BALMI2).  [resolve(9121,a,16,a)].

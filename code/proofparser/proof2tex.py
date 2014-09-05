@@ -52,8 +52,7 @@ def interpret(lines):
             labels[number] = new_number
             line_number = new_number
             new_number += 1
-            if line.count('P') == 1:
-                assert line.startswith('P(')
+            if line.count('P') == 1 and line.startswith('P('):
                 assert line.endswith(')')
                 line = line[2:][:-1]
             if method == 'assumption':
@@ -62,6 +61,10 @@ def interpret(lines):
                 uses_labels = [labels[int(use)] for use in
                                re.findall('\d+', method)]
                 yield line_number, line, uses_labels
+            elif line.startswith('$F'):
+                pass
+            else:
+                raise ValueError("Unknown line format: %s" % line)
                 
 
 def to_latex(interpretation):
