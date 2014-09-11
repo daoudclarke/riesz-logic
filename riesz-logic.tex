@@ -6,7 +6,7 @@
 
 \author{Daoud Clarke}
 \date{\today}
-\title{The Logic of Vector Lattices}
+\title{Riesz Logic}
 
 %\usepackage{times}
 %\usepackage{mathptmx}
@@ -24,6 +24,20 @@
 \newcommand{\interp}[1]{\llbracket #1 \rrbracket}
 
 \begin{document}
+
+
+\begin{abstract}
+We introduce Riesz Logic, whose models are lattice ordered groups,
+which generalise Riesz spaces (vector lattices), and show soundness
+and completeness. Our motivation is to provide a logic for
+distributional semantics of natural language, where words are
+typically represented as elements of a vector space whose dimensions
+correspond to contexts in which words may occur. This basis provides a
+lattice ordering on the space, and this ordering may be interpreted as
+``distributional entailment''. Several axioms of RL are familiar from
+Basic Fuzzy Logic, and we show how the models of these two logics may
+be related; RL may thus be considered a new class of fuzzy logic.
+\end{abstract}
 
 \maketitle
 
@@ -272,12 +286,13 @@ BALPI+ follows from R2. To see BALPI$-$:
 \end{align*}
 \end{proof}
 
-\begin{proof}[BALG]
-BALG+:
+\begin{proof}[BALG+]
 \begin{flalign*}
 \input{proof-tex/balg1-proof}
 \end{flalign*}
-BALG$-$:
+\end{proof}
+
+\begin{proof}{BALG$-$}
 \begin{flalign*}
 \input{proof-tex/balg2-proof}
 \end{flalign*}
@@ -355,8 +370,6 @@ there is a tautology $\phi$ in RL.
 \bibliographystyle{elsarticle-harv}
 \bibliography{JW2012}
 
-
-\section{Motivation}
 
 
 
