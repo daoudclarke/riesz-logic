@@ -1,0 +1,4 @@
+3 P(x v 0 => (x v 0) v 0) # label(BALPa) # label(non_clause) # label(goal).  [goal].
+8 P(x => x v y) # label(R2).  [assumption].
+15 -P(c1 v 0 => (c1 v 0) v 0) # label(BALPa) # answer(BALPa).  [deny(3)].
+16 $F # answer(BALPa).  [resolve(15,a,8,a)].

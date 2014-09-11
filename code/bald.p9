@@ -154,15 +154,15 @@ formulas(goals).
 %% P((x => (y => z)) => (y => (x => z))) # label(BALC).
 
 %% P(((x => y) => y) => x) # label(BALNa).
-P(x => ((x => y) => y)) # label(BALNb).
+%% P(x => ((x => y) => y)) # label(BALNb).
 
 %% P(x v 0 => ((x v 0) v 0)) # label(BALPa).
 %% P(((x v 0) v 0) => x v 0) # label(BALPb).
 
 % Assumed:
 
-%% P(((x => y) v 0 => (y => x) v 0) => (y => x)).
-%% P((y => x) => ((x => y) v 0 => (y => x) v 0)).
+%% P(((x => y) v 0 => (y => x) v 0) => (y => x)) # label(BALOa).
+%% P((y => x) => ((x => y) v 0 => (y => x) v 0)) # label(BALOb).
 
 % Towards BALPI
 %P(x => y) -> P(x v z => y v z).

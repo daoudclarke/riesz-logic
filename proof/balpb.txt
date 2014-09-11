@@ -1,0 +1,4 @@
+3 P((x v 0) v 0 => x v 0) # label(BALPb) # label(non_clause) # label(goal).  [goal].
+10 P((x v y) v y => x v y) # label(R4).  [assumption].
+15 -P((c1 v 0) v 0 => c1 v 0) # label(BALPb) # answer(BALPb).  [deny(3)].
+16 $F # answer(BALPb).  [resolve(15,a,10,a)].
