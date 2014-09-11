@@ -118,6 +118,10 @@ abelian lattice ordered groups.
   ordered group. Where there is no confusion, we refer to the lattice
   ordered group $\langle G, +, \le\rangle$ as simply $G$. We denote
   the lattice meet and join by $\land$ and $\lor$ respectively.
+
+  The \textbf{positive part} of $u\in G$ is written $u^+$ and is defined
+  as $u^+ = u\lor 0$; its \textbf{negative part} is defined as $u^- =
+  (-u)\lor 0$.
 \end{definition}
 
 Riesz spaces are abelian lattice ordered groups where the group
@@ -175,8 +179,9 @@ group, which we also denote 0.
   \interp{(\psi \rightarrow \phi) \lor 0} - \interp{(\phi \rightarrow \psi)\lor 0} &= F(\phi) - F(\psi)\\
   (F(\phi) - F(\psi))^+ - (F(\phi) - F(\psi))^- & =F(\phi) - F(\psi)
 \end{align*}
-where $x^+ = x\lor 0$ and $x^- = (-x)\lor 0$ are the positive and
-negative parts of $x$ respectively. The identity $x = x^+ - x^-$ is
+%% where $x^+ = x\lor 0$ and $x^- = (-x)\lor 0$ are the positive and
+%% negative parts of $x$ respectively.
+The identity $x = x^+ - x^-$ is
 well known for lattice ordered groups, and can be shown by $x + x^- =
 x + (-x)\lor 0 = (x - x)\lor(x + 0) = 0\lor x = x^+$.
 \end{proof}
@@ -207,14 +212,14 @@ F(\psi)$. The logic has the following axioms:
 and the following inference rules:\\
 \begin{minipage}{0.49\textwidth}
 \begin{gather}
-  \tag{MP} \frac{\phi, \phi \rightarrow \psi}{\psi},\\
-  \tag{PI} \frac{\phi}{\phi^+},
+  \tag{BALMP} \frac{\phi, \phi \rightarrow \psi}{\psi},\\
+  \tag{BALPI} \frac{\phi}{\phi^+},
 \end{gather}
 \end{minipage}
 \begin{minipage}{0.49\textwidth}
 \begin{gather}
-  \tag{G} \frac{\phi, \psi}{\phi \rightarrow \psi},\\
-  \tag{MI} \frac{(\phi\rightarrow\psi)^+}{(\phi^+\rightarrow\psi^+)^+}.
+  \tag{BALG} \frac{\phi, \psi}{\phi \rightarrow \psi},\\
+  \tag{BALMI} \frac{(\phi\rightarrow\psi)^+}{(\phi^+\rightarrow\psi^+)^+}.
 \end{gather}
 \end{minipage}
 \vspace{0.3cm}\\
@@ -253,8 +258,8 @@ $$\frac{\phi_1,\phi_2,\ldots, \phi_1\rightarrow 0, \phi_2\rightarrow
 For each rule BALR in BAL, we will refer to these two versions as
 BALR+ and BALR$-$ respectively.
 
-\begin{proof}[MP]
-MP+ follows trivially from the assumption of the rule MP in RL. To see MP$-$:
+\begin{proof}[BALMP]
+BALMP+ follows trivially from the assumption of the rule MP in RL. To see BALMP$-$:
 \begin{align}
 \input{proof-tex/balmp-proof}
 \end{align}
@@ -292,23 +297,35 @@ Given this, we then show that $(\alpha \lor 0 \rightarrow \beta \lor
 \begin{flalign*}
 \input{proof-tex/balmi2b-proof}
 \end{flalign*}
-Finally, we show a general proof that if $\alpha \rightarrow 0$ then
-$\alpha \lor 0 \rightarrow 0$:
-\begin{align*}
-\input{proof-tex/balmipos-proof}
-\end{align*}
-Thus given $(\alpha \rightarrow \beta) \lor 0 \rightarrow 0$, we can
-show that $(\alpha\lor 0\rightarrow\beta\lor 0)\lor 0 \rightarrow 0$.
+Finally, we make use of BALPI$-$ to show that we can take the
+disjunction with 0 on the left-hand side.  Thus given $(\alpha
+\rightarrow \beta) \lor 0 \rightarrow 0$, we can show that
+$(\alpha\lor 0\rightarrow\beta\lor 0)\lor 0 \rightarrow 0$.
 \end{proof}
 
 \subsection{Axioms}
 
-\begin{proof}[BALB]
+In this section, we show that the axioms of BAL are tautologies of
+RL. As before, we will refer to the axiom BALA of BAL as BALA+, and
+its converse as BALA$-$. Note that BALC is its own converse.
+
+\begin{proof}[BALB+]
 \begin{flalign*}
 \input{proof-tex/balba}
 \end{flalign*}
 \end{proof}
 
+\begin{proof}[BALB$-$]
+\begin{flalign*}
+\input{proof-tex/balbb}
+\end{flalign*}
+\end{proof}
+
+\begin{proof}[BALC]
+\begin{flalign*}
+\input{proof-tex/balc}
+\end{flalign*}
+\end{proof}
 
 \begin{proof}[Asserting Positivity]
 

@@ -148,10 +148,10 @@ formulas(goals).
 
 % Proven: -----------------------------------------------------
 
-P((x => y) => ((z => x) => (z => y))) # label(BALBa). 
+%% P((x => y) => ((z => x) => (z => y))) # label(BALBa). 
 %% P(((z => x) => (z => y)) => (x => y)) # label(BALBb).
 
-%% P((x => (y => z)) => (y => (x => z))) # label(BALC).
+P((x => (y => z)) => (y => (x => z))) # label(BALC).
 
 %% P(((x => y) => y) => x) # label(BALNa).
 %% P(x => ((x => y) => y)) # label(BALNb).
