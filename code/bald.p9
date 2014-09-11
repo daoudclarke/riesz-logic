@@ -1,5 +1,5 @@
 % Our own version of BAL logic, using disjunction as the basis
-assign(max_seconds, 30).
+assign(max_seconds, 500).
 
 
 op(600, infix, "=>"). % Riesz space implication
@@ -106,9 +106,11 @@ P((y => x) => ((x => y) v 0 => (y => x) v 0)) # label(R6b).
 %% % BALMI part b
 %% P(b => a).
 
-% BALMI part c
-P(((a v 0) => (b v 0)) => 0) # label(BALMI2b).
+%% % BALMI part c
+%% P(((a v 0) => (b v 0)) => 0) # label(BALMI2b).
 
+% BALMIPOS
+P(a => 0).
 
 end_of_list.
 
@@ -187,10 +189,13 @@ formulas(goals).
 %% P((a => b) => 0) # label(BALG2).
 %% P(((a v 0) => (b v 0)) v 0) # label(BALMI1).
 %% P(((a v 0) => (b v 0)) => 0) # label(BALMI2b).
-P(((a v 0) => (b v 0)) v 0 => 0) # label(BALMI2).
+%% P(((a v 0) => (b v 0)) v 0 => 0) # label(BALMI2).
 
 %% % BALMI part 1
 %% P(b => a).
+
+% BALMIPOS
+P(a v 0 => 0).
 
 % Proven:
 

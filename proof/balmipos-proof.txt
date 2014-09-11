@@ -1,0 +1,31 @@
+7 P(((x => y) => (z => y)) => (z => x)) # label(R1b).  [assumption].
+8 P(x => x v y) # label(R2).  [assumption].
+9 P(x v y => y v x) # label(R3).  [assumption].
+10 P((x v y) v y => x v y) # label(R4).  [assumption].
+12 P((x => x) => 0) # label(R5b).  [assumption].
+13 P(((x => y) v 0 => (y => x) v 0) => (y => x)) # label(R6a).  [assumption].
+15 P(a => 0).  [assumption].
+16 -P(a v 0 => 0).  [deny(3)].
+20 P(x => ((x => y) => y)).  [ur(4,a,7,a,b,7,a)].
+23 P(x v y => (x v z) v y).  [ur(5,a,8,a)].
+28 P((x v y) v z => (y v x) v z).  [ur(5,a,9,a)].
+30 P((x v y => z) => (y v x => z)).  [ur(4,a,9,a,b,6,a)].
+33 P((x v y => z) => ((x v y) v y => z)).  [ur(4,a,10,a,b,6,a)].
+38 P(0).  [ur(4,a,9,a,b,12,a)].
+43 P(((x => y) => z) => (((y => x) v 0 => (x => y) v 0) => z)).  [ur(4,a,13,a,b,6,a)].
+56 P(a v x => 0 v x).  [ur(5,a,15,a)].
+107 P((0 => x) => x).  [ur(4,a,38,a,b,20,a)].
+126 P((0 => x) v y => x v y).  [ur(5,a,107,a)].
+168 P((0 v x => y) => (a v x => y)).  [ur(4,a,56,a,b,6,a)].
+186 P(((x v y) v z => u) => (x v z => u)).  [ur(4,a,23,a,b,6,a)].
+315 P(((x v y) v z => u) => ((y v x) v z => u)).  [ur(4,a,28,a,b,6,a)].
+856 P(((x => y v z) v 0 => (y v z => x) v 0) => (z v y => x)).  [ur(4,a,30,a,b,43,a)].
+1235 P((x v y => z) => ((0 => x) v y => z)).  [ur(4,a,126,a,b,6,a)].
+17577 P((x v y) v x => y v x).  [ur(4,a,10,a,b,315,a)].
+20089 P(x v x => y v x).  [ur(4,a,17577,a,b,186,a)].
+20126 P(a v 0 => x v 0).  [ur(4,a,20089,a,b,168,a)].
+20166 P((a v 0) v 0 => x v 0).  [ur(4,a,20126,a,b,33,a)].
+21886 P((0 v a) v 0 => x v 0).  [ur(4,a,20166,a,b,315,a)].
+23667 P((0 => 0 v a) v 0 => x v 0).  [ur(4,a,21886,a,b,1235,a)].
+28645 P(a v 0 => 0).  [ur(4,a,23667,a,b,856,a)].
+28646 $F.  [resolve(28645,a,16,a)].
