@@ -287,13 +287,18 @@ $\alpha \rightarrow \beta$ is less than zero, then $\beta \rightarrow
 \begin{flalign*}
 \input{proof-tex/balmi2a-proof}
 \end{flalign*}
-We then show that given this conclusion
+Given this, we then show that $(\alpha \lor 0 \rightarrow \beta \lor
+0) \rightarrow 0$:
 \begin{flalign*}
 \input{proof-tex/balmi2b-proof}
 \end{flalign*}
+Finally, we show a general proof that if $\alpha \rightarrow 0$ then
+$\alpha \lor 0 \rightarrow 0$:
 \begin{align*}
-\input{proof-tex/balmi2c-proof}
+\input{proof-tex/balmipos-proof}
 \end{align*}
+Thus given $(\alpha \rightarrow \beta) \lor 0 \rightarrow 0$, we can
+show that $(\alpha\lor 0\rightarrow\beta\lor 0)\lor 0 \rightarrow 0$.
 \end{proof}
 
 \begin{proof}[Asserting Positivity]

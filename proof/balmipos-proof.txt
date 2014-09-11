@@ -1,3 +1,9 @@
+1 P(x) & P(x => y) -> P(y) # label(MP) # label(non_clause).  [assumption].
+2 P(x => y) -> P(x v z => y v z) # label(RI) # label(non_clause).  [assumption].
+3 P(a v 0 => 0) # label(non_clause) # label(goal).  [goal].
+4 -P(x) | -P(x => y) | P(y) # label(MP).  [clausify(1)].
+5 -P(x => y) | P(x v z => y v z) # label(RI).  [clausify(2)].
+6 P((x => y) => ((y => z) => (x => z))) # label(R1a).  [assumption].
 7 P(((x => y) => (z => y)) => (z => x)) # label(R1b).  [assumption].
 8 P(x => x v y) # label(R2).  [assumption].
 9 P(x v y => y v x) # label(R3).  [assumption].
