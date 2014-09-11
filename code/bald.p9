@@ -112,6 +112,9 @@ P((y => x) => ((x => y) v 0 => (y => x) v 0)) # label(R6b).
 %% % BALMIPOS
 %% P(a => 0).
 
+% POS
+P((a => 0) v 0 => 0).
+
 end_of_list.
 
 %% formulas(hints).
@@ -140,7 +143,7 @@ formulas(goals).
 % Show that we can deduce assertions of positivity
 %P((x => 0) v 0) & P(((x => 0) v 0) => 0) -> P(x)   # label(POS).
 %P((x => 0) v 0) -> P(x)   # label(POS).
-%P(((x => 0) v 0) => 0) -> P(x)   # label(POS).
+%% P(((x => 0) v 0) => 0) -> P(x)   # label(POS).
 %P(((x => y) v 0) => 0) -> P(y => x) # label(POS).
 
 % BAL axioms. These come in pairs since we are asserting positivity
@@ -196,6 +199,9 @@ formulas(goals).
 
 %% % BALMIPOS
 %% P(a v 0 => 0).
+
+% POS
+P(a).
 
 % Proven:
 
