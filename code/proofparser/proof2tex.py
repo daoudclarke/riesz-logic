@@ -51,6 +51,8 @@ def interpret(lines):
         if not label:
             labels[number] = new_number
             line_number = new_number
+            if line.startswith('$F') or method.startswith('deny'):
+                continue
             new_number += 1
             if line.count('P') == 1 and line.startswith('P('):
                 assert line.endswith(')')
@@ -61,8 +63,6 @@ def interpret(lines):
                 uses_labels = [labels[int(use)] for use in
                                re.findall('\d+', method)]
                 yield line_number, line, uses_labels
-            elif line.startswith('$F'):
-                pass
             else:
                 raise ValueError("Unknown line format: %s" % line)
                 

@@ -10,7 +10,7 @@
 10 P((x v y) v y => x v y) # label(R4).  [assumption].
 12 P((x => x) => 0) # label(R5b).  [assumption].
 13 P(((x => y) v 0 => (y => x) v 0) => (y => x)) # label(R6a).  [assumption].
-15 P((a v 0 => b v 0) => 0) # label(BALMI2b).  [assumption].
+15 P((a v 0 => b v 0) => 0).  [assumption].
 16 -P((a v 0 => b v 0) v 0 => 0) # label(BALMI2) # answer(BALMI2).  [deny(3)].
 20 P(x => ((x => y) => y)).  [ur(4,a,7,a,b,7,a)].
 23 P(x v y => (x v z) v y).  [ur(5,a,8,a)].
