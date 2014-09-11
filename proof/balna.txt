@@ -1,0 +1,8 @@
+1 P(x) & P(x => y) -> P(y) # label(MP) # label(non_clause).  [assumption].
+3 P(((x => y) => y) => x) # label(BALNa) # label(non_clause) # label(goal).  [goal].
+4 -P(x) | -P(x => y) | P(y) # label(MP).  [clausify(1)].
+6 P((x => y) => ((y => z) => (x => z))) # label(R1a).  [assumption].
+7 P(((x => y) => (z => y)) => (z => x)) # label(R1b).  [assumption].
+15 -P(((c1 => c2) => c2) => c1) # label(BALNa) # answer(BALNa).  [deny(3)].
+20 P(((x => y) => y) => x).  [ur(4,a,6,a,b,7,a)].
+21 $F # answer(BALNa).  [resolve(20,a,15,a)].
