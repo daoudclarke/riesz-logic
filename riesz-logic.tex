@@ -15,6 +15,9 @@
 \usepackage{amsmath}
 \usepackage{stmaryrd}
 \usepackage{cmll}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
 %\usepackage{mathabx}
 
 \newdefinition{definition}{Definition}
@@ -118,6 +121,25 @@ contexts in which they occur. This notion of ``distributional
 semantics'' has its origin in the work of Firth \cite{Firth:57} and
 Harris \cite{Harris:68}, and the philosophy of Wittgenstein
 \cite{Wittgenstein:53}.
+
+\section{Relation to Fuzzy Logic}
+
+
+\begin{figure}
+  \begin{subfigure}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{lukasiewicz.pdf}
+    \caption{\L ukasiewicz t-norm}
+    \label{fig:lukasiewicz}
+  \end{subfigure}
+  \begin{subfigure}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{rieszfunc.pdf}
+    \caption{Logistic addition}
+    \label{fig:logistic}
+  \end{subfigure}
+  \caption{Mapping real numbers to the interval $[0,1]$ gives a new
+    operation corresponding to addition (\subref{fig:logistic}), which
+    bears some similarities to t-norms (\subref{fig:lukasiewicz}).}
+\end{figure}
 
 \section{Interpretations}
 
