@@ -1,0 +1,76 @@
+%Created by jPicEdt 1.x
+%PsTricks format (pstricks.sty needed)
+%Mon Jan 22 15:03:05 GMT 2007
+\psset{xunit=1mm,yunit=1mm,runit=1mm}
+\begin{pspicture}(0,0)(119.79,50.00)
+\newrgbcolor{userFillColour}{1.00 1.00 1.00}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](2.58,15.00)(5.37,25.00)
+\newrgbcolor{userFillColour}{1.00 1.00 1.00}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](8.16,15.00)(10.95,20.00)
+\newrgbcolor{userFillColour}{1.00 1.00 1.00}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](19.33,15.00)(22.12,50.00)
+\newrgbcolor{userFillColour}{1.00 1.00 1.00}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](30.49,15.00)(33.28,30.00)
+\newrgbcolor{userFillColour}{0.80 0.80 0.80}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](44.44,15.00)(47.23,20.00)
+\newrgbcolor{userFillColour}{0.80 0.80 0.80}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](50.02,15.00)(52.81,30.00)
+\newrgbcolor{userFillColour}{0.80 0.80 0.80}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](55.60,15.00)(58.40,35.00)
+\newrgbcolor{userFillColour}{0.80 0.80 0.80}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](61.19,15.00)(63.98,30.00)
+\newrgbcolor{userFillColour}{0.80 0.80 0.80}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](66.77,15.00)(69.56,40.00)
+\newrgbcolor{userFillColour}{0.80 0.80 0.80}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](72.35,15.00)(75.14,30.00)
+\psline[linewidth=0.15,linecolor=black]{-}(-0.21,15.00)(36.07,15.00)
+\psline[linewidth=0.15,linecolor=black]{-}(41.65,15.00)(77.93,15.00)
+\rput[l](2.58,11.00){$d_2$}
+\rput[l](8.16,11.00){$d_3$}
+\rput[l](13.74,11.00){$d_5$}
+\rput[l](19.33,11.00){$d_6$}
+\rput[l](24.91,11.00){$d_7$}
+\rput[l](30.49,11.00){$d_8$}
+\rput[l](44.44,11.00){$d_2$}
+\rput[l](50.02,11.00){$d_3$}
+\rput[l](55.60,11.00){$d_5$}
+\rput[l](61.19,11.00){$d_6$}
+\rput[l](66.77,11.00){$d_7$}
+\rput[l](72.35,11.00){$d_8$}
+\rput[l](86.30,11.00){$d_2$}
+\rput[l](91.88,11.00){$d_3$}
+\rput[l](97.47,11.00){$d_5$}
+\rput[l](103.05,11.00){$d_6$}
+\rput[l](108.63,11.00){$d_7$}
+\rput[l](114.21,11.00){$d_8$}
+\newrgbcolor{userLineColour}{0.80 0.80 0.80}
+\newrgbcolor{userFillColour}{1.00 1.00 1.00}
+\psframe[linewidth=0.15,linecolor=userLineColour,fillcolor=userFillColour,fillstyle=solid](86.30,15.00)(89.09,25.00)
+\newrgbcolor{userLineColour}{0.80 0.80 0.80}
+\newrgbcolor{userFillColour}{1.00 1.00 1.00}
+\psframe[linewidth=0.15,linecolor=userLineColour,fillcolor=userFillColour,fillstyle=solid](103.05,15.00)(105.84,50.00)
+\newrgbcolor{userLineColour}{0.80 0.80 0.80}
+\newrgbcolor{userFillColour}{1.00 1.00 1.00}
+\psframe[linewidth=0.15,linecolor=userLineColour,fillcolor=userFillColour,fillstyle=solid](114.21,15.00)(117.00,30.00)
+\newrgbcolor{userLineColour}{0.80 0.80 0.80}
+\newrgbcolor{userFillColour}{0.80 0.80 0.80}
+\psframe[linewidth=0.15,linecolor=userLineColour,fillcolor=userFillColour,fillstyle=solid](91.88,15.00)(94.67,30.00)
+\newrgbcolor{userLineColour}{0.80 0.80 0.80}
+\newrgbcolor{userFillColour}{0.80 0.80 0.80}
+\psframe[linewidth=0.15,linecolor=userLineColour,fillcolor=userFillColour,fillstyle=solid](97.47,15.00)(100.26,35.00)
+\newrgbcolor{userLineColour}{0.80 0.80 0.80}
+\newrgbcolor{userFillColour}{0.80 0.80 0.80}
+\psframe[linewidth=0.15,linecolor=userLineColour,fillcolor=userFillColour,fillstyle=solid](108.63,15.00)(111.42,40.00)
+\newrgbcolor{userFillColour}{0.40 0.40 0.40}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](86.30,15.00)(89.09,20.00)
+\newrgbcolor{userFillColour}{0.40 0.40 0.40}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](91.88,15.00)(94.67,20.00)
+\newrgbcolor{userFillColour}{0.40 0.40 0.40}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](103.05,15.00)(105.84,30.00)
+\newrgbcolor{userFillColour}{0.40 0.40 0.40}
+\psframe[linewidth=0.15,linecolor=black,fillcolor=userFillColour,fillstyle=solid](114.21,15.00)(117.00,30.00)
+\psline[linewidth=0.15,linecolor=black]{-}(83.51,15.00)(119.79,15.00)
+\rput(20.00,5.00){\emph{orange}}
+\rput(60.00,5.00){\emph{fruit}}
+\rput(102.50,5.00){\emph{orange} $\land$ \emph{fruit}}
+\end{pspicture}
