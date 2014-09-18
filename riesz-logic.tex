@@ -59,11 +59,129 @@ tallness. Indeed, one of the proposed applications for these ideas was
 in linguistics \cite{Zadeh:73}. However, these ideas were never
 directly adopted by the linguistics or computational linguistics
 community. Instead, fuzziness has crept into natural language
-semantics by the widespread adoption of ``distributional semantics'',
-in which the meaning of words is determined by the contexts in which
-they occur. This idea has its origin in the work of Firth
-\cite{Firth:57} and Harris \cite{Harris:68}, and the philosophy of
-Wittgenstein \cite{Wittgenstein:53}.
+semantics research by the widespread adoption of ``distributional
+semantics'', in which the meaning of words is determined by the
+contexts in which they occur. These techniques typically represent
+word meanings as vectors over these contexts, which capture fuzzy
+relationships between word meanings.
+
+One question that is now being studied is how these vector based
+representations can be related to older, logical representations of
+meaning, in which a sentence would typically be translated into a
+logical form. The goal of this paper is to show that the vector spaces
+used in distributional semantics, Riesz Spaces, can be considered as
+models for a logic, which we call Riesz Logic (RL). Our hope is that
+this will lead to a confluence of distributional and logical
+semantics, opening up new areas of research and new methods of
+tackling problems in natural language processing.
+
+%%  Initially,
+%% researchers were mainly interested in using these vectors to derive
+%% symmetric measures of similarity between word meanings; more recently,
+%% it has been proposed that we consider measures that can be interpreted
+%% as degrees of entailment.
+
+%% This ``distributional entailment'' makes use of the implicit lattice
+%% ordering on the vector space whose meet and join correspond to
+%% component-wise minimum and maximum respectively, where the basis is
+%% defined by the set of contexts.
+
+%%  Whilst these
+%% vectors have been used to give measures of similarity of word
+%% meanings, and degrees of entailment, until now they haven't been
+
+%% We introduce Riesz Logic (RL), a variant of fuzzy logic whose models
+%% are abelian lattice ordered groups, of which the most familiar
+%% examples are vector lattices, or Riesz spaces.
+
+RL has the following inference rules:\\
+\begin{minipage}{0.49\textwidth}
+\begin{gather}
+  \tag{MP} \frac{\phi, \phi \rightarrow \psi}{\psi}
+\end{gather}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+\begin{gather}
+  \tag{RI} \frac{\phi \rightarrow \psi}{\phi \lor \chi \rightarrow \psi \lor \chi}
+\end{gather}
+\end{minipage}
+\vspace{0.3cm}\\
+and axioms:
+\begin{align}
+  \tag{R1a} &(\phi \rightarrow \psi) \rightarrow ((\psi \rightarrow \chi)
+  \rightarrow (\phi \rightarrow \chi))\\
+  \tag{R1b} &((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow
+  \chi)) \rightarrow (\phi \rightarrow \psi)\\
+  \tag{R2} &\phi \rightarrow \phi \lor \psi\\
+  \tag{R3} &\phi \lor \psi \rightarrow \psi \lor \phi,\\
+  \tag{R4} &(\phi \lor \psi)\lor \psi \rightarrow \phi \lor \psi\\
+  \tag{R5a} &0 \rightarrow (\phi \rightarrow \phi)\\
+  \tag{R5b} &(\phi \rightarrow\phi) \rightarrow 0\\
+  \tag{R6a} &((\phi \rightarrow \psi)\lor 0 \rightarrow (\psi \rightarrow \phi) \lor 0) \rightarrow (\psi \rightarrow \phi)\\
+  \tag{R6b} & (\psi \rightarrow \phi) \rightarrow ((\phi \rightarrow \psi)\lor 0 \rightarrow (\psi \rightarrow \phi) \lor 0)
+\end{align}
+In this paper we prove the soundness and completeness of this logic
+with respect to abelian lattice ordered groups, which generalise Riesz
+spaces, with formulas interpreted as asserting positivity. In doing
+this, we relate RL to the Logic of Equilibrium, known as BAL
+\cite{Galli:04}.
+
+%  In particular there is no ``True'' or
+% ``False'' constant, instead there is a zero value which indicates
+% maximal uncertainty about a proposition. We demonstrate that our logic
+% is equivalent to the logic BAL of
+
+\section{Background}
+
+\subsection{Distributional Semantics}
+
+Distributional semantics (see \cite{Turney:10} for a comprehensive
+overview) is founded on the idea that the meaning of words can be
+determined by observing the contexts in which they occur. This idea
+has its origin in the work of Firth \cite{Firth:57} and Harris
+\cite{Harris:68}, and the philosophy of Wittgenstein
+\cite{Wittgenstein:53}. This idea has lead to techniques which analyse
+large text corpora to build word representations. For example, Figure
+\ref{fig:fruit} shows a sample of occurrences of the word ``fruit'' in
+the British National Corpus. Word representations built from such
+corpora are typically vectors describing the frequency with which the
+word occurs in different contexts. Depending on the application, the
+set of contexts which form the basis for the vector space will vary:
+\begin{itemize}
+\item Document identifiers: the context of a word is treated as the ID
+  of the document in which it occurs.
+\item Other words: a word is considered to cooccur with another word
+  if they are seen together within a window of a fixed number of
+  words, or within the same sentence.
+\item Grammatical relations: sentences may be parsed to give
+  dependency relations between words, and these relations treated as
+  contexts.
+\end{itemize}
+Table \ref{table:fruit} shows hypothetical occurrences of a few terms
+where document identifiers have been used as the contexts.
+
+These raw frequency vectors are then typically processed in a variety
+of ways to reliably determine relationships between words. A typical
+system will employ one or more of the following techniques:
+\begin{itemize}
+\item Stopword removal or feature selection to identify contexts that
+  provide useful contributions to the word's meaning
+\item Replacing frequency counts with derived statistics such as
+  pointwise mutual information or TF-IDF (term frequency-inverse
+  document frequency)
+\item Dimensionality reduction such as random projection or truncated
+  singular value decomposition.
+\end{itemize}
+After these processing stages, instead of being integer frequency
+counts, word vectors are now typically real-valued, and may even
+contain negative values, for example if pointwise mutual information
+is used (although it is also common to set the negative components to
+zero). There is also typically still a preferred basis for the vector
+space, although the meaning of the basis vectors may no longer be tied
+to individual contexts, for example if dimensionality reduction has
+been performed. Instead, these dimensions are often considered to
+correspond to hidden ``latent'' aspects of meaning.
+
 
 \begin{figure}
 \begin{Verbatim}[fontsize=\scriptsize]
@@ -99,7 +217,7 @@ onnoisseurs. We take a bite from an unusual  fruit. We come away neither nourish
 \end{Verbatim}
 
 \caption{Occurrences and some context of occurrences of the word \emph{fruit} in the British National Corpus.}
-\label{fruit}
+\label{fig:fruit}
 \end{figure}
 
 \begin{table}
@@ -118,10 +236,50 @@ computer\T& --		& --		& --		& 6		& --		& --		& --		& --\\
 \hline
 \end{tabular}
 \caption{A table of hypothetical occurrences of words in a set of documents, $d_1$ to $d_8$.}
-\label{fruittable}
+\label{table:fruit}
 \end{center}
 \end{table}
 
+\subsection{Distributional Generality}
+
+Distributional word vectors are often used in applications where it is
+enough to know how similar two words are in meaning. For this purpose,
+measures of distributional \emph{similarity} are sufficient, for
+example, the cosine of the angle between two vectors is one measure
+that is often used. However, for applications such as information
+retrieval or question answering it is important to know whether it is
+likely that one word \emph{entails} another. Recent research has
+investigated to what degree it is possible to determine this from word
+vectors
+\cite{Weeds2004,Geffet2005,Szpektor2008,Kotlerman2010,Weeds:14}. One
+proposal supported by these experiments, known as distributional
+\emph{generality} or distributional \emph{inclusion}, is the idea that
+words with a more general meaning will occur in a wider range of
+contexts.
+
+This idea was formalised in \cite{clarke:12} in terms of the lattice
+ordering that is implicit in the vector space. Since the vector spaces
+used in these applications almost always have a preferred basis, it is
+possible to define a lattice ordering, where the meet and join
+operations are the component-wise minimum and maximum
+respectively. This makes the space a vector lattice, or Riesz space:
+
+\begin{definition}[Partially ordered vector space]\index{vector space!partially ordered|textbf}
+A partially ordered vector space $V$ is a real vector space together with a partial ordering $\le$ such that:
+\vspace{0.1cm}\\
+\indent if $u \le v$ then $u + w \le v + w$\\
+\indent if $u \le v$ then $\alpha u \le \alpha v$
+\vspace{0.1cm}\\
+for all $u,v,w \in V$, and for all $\alpha \ge 0$. Such a partial ordering is called a \textbf{vector space order} on $V$. An element $u$ of $V$ satisfying $u \ge 0$ is called a \textbf{positive element}; the set of all positive elements of $V$ is denoted $V^+$. If $\le$ defines a lattice on $V$ then the space is called a \textbf{vector lattice} or \textbf{Riesz space}.
+\end{definition}
+
+The intuition behind the ordering $\le$ is that it describes a
+\emph{distributional entailment}: assuming that $\hat{x}$ and
+$\hat{y}$ are distributional vectors of word frequencies for words $x$
+and $y$ respectively, then $\hat{x} \le \hat{y}$ means that $y$ occurs
+at least as frequently as $x$ in all contexts. Figure
+\ref{fig:orangefruit} gives an example of the meet operation for
+hypothetical word frequency vectors.
 
 \begin{figure}
 \begin{center}
@@ -129,50 +287,10 @@ computer\T& --		& --		& --		& 6		& --		& --		& --		& --\\
 \caption{Vector representations of the terms \emph{orange} and
   \emph{fruit} and their vector lattice meet (the darker shaded
   area).}
-\label{orangefruit}
+\label{fig:orangefruit}
 \end{center}
 \end{figure}
 
-
-We introduce Riesz Logic (RL), a variant of fuzzy logic whose models
-are abelian lattice ordered groups, of which the most familiar
-examples are vector lattices, or Riesz spaces.
-
-RL has the following inference rules:\\
-\begin{minipage}{0.49\textwidth}
-\begin{gather}
-  \tag{MP} \frac{\phi, \phi \rightarrow \psi}{\psi}
-\end{gather}
-\end{minipage}
-\begin{minipage}{0.49\textwidth}
-\begin{gather}
-  \tag{RI} \frac{\phi \rightarrow \psi}{\phi \lor \chi \rightarrow \psi \lor \chi}
-\end{gather}
-\end{minipage}
-\vspace{0.3cm}\\
-and the following axioms:
-\begin{align}
-  \tag{R1a} &(\phi \rightarrow \psi) \rightarrow ((\psi \rightarrow \chi)
-  \rightarrow (\phi \rightarrow \chi))\\
-  \tag{R1b} &((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow
-  \chi)) \rightarrow (\phi \rightarrow \psi)\\
-  \tag{R2} &\phi \rightarrow \phi \lor \psi\\
-  \tag{R3} &\phi \lor \psi \rightarrow \psi \lor \phi,\\
-  \tag{R4} &(\phi \lor \psi)\lor \psi \rightarrow \phi \lor \psi\\
-  \tag{R5a} &0 \rightarrow (\phi \rightarrow \phi)\\
-  \tag{R5b} &(\phi \rightarrow\phi) \rightarrow 0\\
-  \tag{R6a} &((\phi \rightarrow \psi)\lor 0 \rightarrow (\psi \rightarrow \phi) \lor 0) \rightarrow (\psi \rightarrow \phi)\\
-  \tag{R6b} & (\psi \rightarrow \phi) \rightarrow ((\phi \rightarrow \psi)\lor 0 \rightarrow (\psi \rightarrow \phi) \lor 0)
-\end{align}
-In this paper we prove the soundness and completeness of this logic
-with respect to abelian lattice ordered groups, with formulas
-interpreted as asserting positivity. In doing this, we relate RL to
-the Logic of Equilibrium, known as BAL \cite{Galli:04}.
-
-%  In particular there is no ``True'' or
-% ``False'' constant, instead there is a zero value which indicates
-% maximal uncertainty about a proposition. We demonstrate that our logic
-% is equivalent to the logic BAL of
 
 \section{Motivation}
 
