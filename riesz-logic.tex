@@ -359,9 +359,24 @@ rule and axioms.
 
 %\subsection{Modus Ponens}
 
-\begin{proof}[Modus Ponens]
+\begin{proof}[MP]
 If $0 \le F(\phi)$ and $0 \le F(\psi) - F(\phi)$ then
 $0 \le F(\psi)$ by transitivity of $\le$.
+\end{proof}
+
+\begin{proof}[RI]
+  This follows from simple lattice-theoretic properties: The assertion
+  $\phi \rightarrow \psi$ translates to $F(\phi) \le F(\psi)$. As a
+  shorthand, let us write $u = F(\phi)$, $v = F(\psi)$ and $w =
+  F(\chi)$; we wish to show that $u\le v$ implies $u\lor w \le v \lor
+  w$. To see this:
+  \begin{align*}
+    u &\le v\\
+    u\lor v &= v\\
+    u\lor v\lor w &= v\lor w\\
+    (u\lor w)\lor (v\lor w) &= v\lor w\\
+    u\lor w &\le v\lor w.
+  \end{align*}
 \end{proof}
 
 \begin{proof}[R1]
