@@ -2,7 +2,7 @@
 var margin = {top: 20, right: 40, bottom: 30, left: 20},
 width = 960 - margin.left - margin.right,
 height = 500 - margin.top - margin.bottom,
-barWidth = Math.floor(width / 19) - 1;
+barWidth = Math.floor(width / 5) - 1;
 
 var x = d3.scale.linear()
     .range([barWidth / 2, width - barWidth / 2]);
@@ -27,11 +27,11 @@ var svg = d3.select("#disjunction").append("svg")
 var birthyears = svg.append("g")
     .attr("class", "birthyears");
 
-// A label for the current year.
-var title = svg.append("text")
-    .attr("class", "title")
-    .attr("dy", ".71em")
-    .text(2000);
+// // A label for the current year.
+// var title = svg.append("text")
+//     .attr("class", "title")
+//     .attr("dy", ".71em")
+//     .text(2000);
 
 d3.csv("/vectors.csv", function(error, data) {
 
@@ -43,19 +43,21 @@ d3.csv("/vectors.csv", function(error, data) {
     });
 
   // Compute the extent of the data set in age and years.
-    var age1 = d3.max(data, function(d) { return d.age; }),
+    var age0 = d3.min(data, function(d) { return d.age; }),
+    age1 = d3.max(data, function(d) { return d.age; }),
     year0 = d3.min(data, function(d) { return d.year; }),
     year1 = d3.max(data, function(d) { return d.year; }),
-    year = year1;
+    year = year0;
 
   // Update the scale domains.
-    x.domain([year1 - age1, year1]);
-    y.domain([0, d3.max(data, function(d) { return d.people; })]);
+    x.domain([age0, age1]);
+    y.domain([d3.min(data, function(d) { return d.people; }),
+	      d3.max(data, function(d) { return d.people; })]);
 
   // Produce a map from year and birthyear to [male, female].
     data = d3.nest()
 	.key(function(d) { return d.year; })
-	.key(function(d) { return d.year - d.age; })
+	.key(function(d) { return d.age; })
 	.rollup(function(v) { return v.map(function(d) { return d.people; }); })
 	.map(data);
 
@@ -70,7 +72,8 @@ d3.csv("/vectors.csv", function(error, data) {
 
   // Add labeled rects for each birthyear (so that no enter or exit is required).
     var birthyear = birthyears.selectAll(".birthyear")
-	.data(d3.range(year0 - age1, year1 + 1, 1))
+	// .data(d3.range(year0 - age1, year1 + 1, 1))
+	.data(d3.range(0, age1 + 1, 1))
 	.enter().append("g")
 	.attr("class", "birthyear")
 	.attr("transform", function(birthyear) { return "translate(" + x(birthyear) + ",0)"; });
@@ -83,38 +86,38 @@ d3.csv("/vectors.csv", function(error, data) {
 	.attr("y", y)
 	.attr("height", function(value) { return height - y(value); });
 
-  // Add labels to show birthyear.
-    birthyear.append("text")
-	.attr("y", height - 4)
-	.text(function(birthyear) { return birthyear; });
+  // // Add labels to show birthyear.
+  //   birthyear.append("text")
+  // 	.attr("y", height - 4)
+  // 	.text(function(birthyear) { return birthyear; });
 
   // Add labels to show age (separate; not animated).
     svg.selectAll(".age")
-	.data(d3.range(0, age1 + 1, 5))
-	.enter().append("text")
-	.attr("class", "age")
-	.attr("x", function(age) { return x(year - age); })
-	.attr("y", height + 4)
-	.attr("dy", ".71em")
-	.text(function(age) { return age; });
+  	.data(d3.range(0, age1 + 1, 1))
+  	.enter().append("text")
+  	.attr("class", "age")
+  	.attr("x", function(age) { return x(age); })
+  	.attr("y", height + 4)
+  	.attr("dy", ".71em")
+  	.text(function(age) { return "d" + age; });
 
   // Allow the arrow keys to change the displayed year.
     window.focus();
     d3.select(window).on("keydown", function() {
 	switch (d3.event.keyCode) {
-	case 38: year = Math.max(year0, year - 10); break;
-	case 40: year = Math.min(year1, year + 10); break;
+	case 38: year = Math.max(year0, year - 1); break;
+	case 40: year = Math.min(year1, year + 1); break;
 	}
 	update();
     });
 
     function update() {
 	if (!(year in data)) return;
-	title.text(year);
+	// title.text(year);
 
-	birthyears.transition()
-            .duration(750)
-            .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+	// birthyears.transition()
+        //     .duration(750);
+            // .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
 
 	birthyear.selectAll("rect")
             .data(function(birthyear) { return data[year][birthyear] || [0, 0]; })
@@ -122,6 +125,12 @@ d3.csv("/vectors.csv", function(error, data) {
             .duration(750)
             .attr("y", y)
             .attr("height", function(value) { return height - y(value); });
+
+	new_title = {1: "$x$",
+		 2: "$y$"}[year];
+
+	d3.select("#disjunction-title").text(new_title)
+	MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
     }
 });
 

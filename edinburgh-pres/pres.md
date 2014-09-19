@@ -91,4 +91,5 @@ $\Huge{x\lor y}$
 
 
 
+<div id="disjunction-title">$x$</div>
 <div id="disjunction"></div>
