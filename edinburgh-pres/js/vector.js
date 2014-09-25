@@ -47,12 +47,13 @@ d3.csv("/vectors.csv", function(error, data) {
     age1 = d3.max(data, function(d) { return d.age; }),
     year0 = d3.min(data, function(d) { return d.year; }),
     year1 = d3.max(data, function(d) { return d.year; }),
+    people0 = d3.min(data, function(d) { return d.people; }),
+    people1 = d3.max(data, function(d) { return d.people; }),
     year = year0;
 
   // Update the scale domains.
     x.domain([age0, age1]);
-    y.domain([d3.min(data, function(d) { return d.people; }),
-	      d3.max(data, function(d) { return d.people; })]);
+    y.domain([people0, people1]);
 
   // Produce a map from year and birthyear to [male, female].
     data = d3.nest()
@@ -71,12 +72,13 @@ d3.csv("/vectors.csv", function(error, data) {
 	.classed("zero", true);
 
   // Add labeled rects for each birthyear (so that no enter or exit is required).
+    //var y_displacement = y(0 - 
     var birthyear = birthyears.selectAll(".birthyear")
 	// .data(d3.range(year0 - age1, year1 + 1, 1))
 	.data(d3.range(0, age1 + 1, 1))
 	.enter().append("g")
 	.attr("class", "birthyear")
-	.attr("transform", function(birthyear) { return "translate(" + x(birthyear) + ",0)"; });
+	.attr("transform", function(birthyear) { return "translate(" + x(birthyear) + "," + y(people1) + ")"; });
 
     birthyear.selectAll("rect")
 	.data(function(birthyear) { return data[year][birthyear] || [0, 0]; })
@@ -84,7 +86,8 @@ d3.csv("/vectors.csv", function(error, data) {
 	.attr("x", -barWidth / 2)
 	.attr("width", barWidth)
 	.attr("y", y)
-	.attr("height", function(value) { return height - y(value); });
+	// .attr("y", function(value) { return y(value - people0); })
+	.attr("height", function(value) { return Math.abs(height - y(Math.abs(value + people0))); });
 
   // // Add labels to show birthyear.
   //   birthyear.append("text")
@@ -123,8 +126,9 @@ d3.csv("/vectors.csv", function(error, data) {
             .data(function(birthyear) { return data[year][birthyear] || [0, 0]; })
 	    .transition()
             .duration(750)
-            .attr("y", y)
-            .attr("height", function(value) { return height - y(value); });
+	    .attr("y", function(value) { return y(value); })
+	    // .attr("y", function(value) { return y(value - people0); })
+            .attr("height", function(value) { return Math.abs(height - y(value + people0)); });
 
 	var orange = "\\widehat{\\mathit{orange}}"
 	var fruit = "\\widehat{\\mathit{fruit}}"
