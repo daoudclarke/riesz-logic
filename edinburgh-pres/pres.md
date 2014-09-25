@@ -22,9 +22,7 @@ Daoud Clarke, University of Sussex
 
 
 $\Huge{x \lor y \qquad\qquad x \land y}$
-
-$ $
-
+# <br>
 $\Huge{x \rightarrow y \qquad\qquad \neg x}$
 
 
@@ -88,8 +86,28 @@ onnoisseurs. We take a bite from an unusual  fruit. We come away neither nourish
 
 
 $\Huge{\widehat{\mathit{orange}}\lor \widehat{\mathit{fruit}}}$
+# <br>
+$\Huge{\widehat{\mathit{orange}}\land \widehat{\mathit{fruit}}}$
 
 
 
-<div id="disjunction-title">$x$</div>
+<div id="disjunction-title">$\widehat{\mathit{orange}}$</div>
 <div id="disjunction"></div>
+
+
+
+## Is that it?
+
+
+
+## Give up standard propositional calculus
+
+
+
+## Look more like a fuzzy logic
+
+
+
+$\Huge{\widehat{\mathit{orange}}\rightarrow \widehat{\mathit{fruit}}}$
+# <br>
+$\Huge{\neg\widehat{\mathit{orange}}}$
