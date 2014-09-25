@@ -33,8 +33,9 @@ def plot(values):
 
     #ax = Axes3D(fig)
     ax.view_init(elev=45., azim=225)
-    plt.show()
-
+    #plt.show()
+    
+    plt.savefig("lukasiewicz.svg", transparent=True)
 
 def logistic_add(x, y):
     return x*y/(1 - x - y + 2*x*y)
@@ -43,8 +44,8 @@ def lukasiewicz(x, y):
     return np.maximum(0, x + y - 1)
 
 if __name__ == "__main__":
-    #values = get_func_values(lukasiewicz)
-    values = get_func_values(logistic_add)
+    values = get_func_values(lukasiewicz)
+    #values = get_func_values(logistic_add)
     #values = np.nan_to_num(values)
     #values = get_func_values(lambda x, y: x+y)
     #print [x.shape for x in values]
