@@ -38,7 +38,7 @@ d3.csv("/vectors.csv", function(error, data) {
   // Convert strings to numbers.
     data.forEach(function(d) {
 	d.people = +d.people;
-	// d.year = +d.year;
+	d.year = +d.year;
 	d.age = +d.age;
     });
 
@@ -126,8 +126,15 @@ d3.csv("/vectors.csv", function(error, data) {
             .attr("y", y)
             .attr("height", function(value) { return height - y(value); });
 
-	new_title = {1: "$x$",
-		 2: "$y$"}[year];
+	var orange = "\\widehat{\\mathit{orange}}"
+	var fruit = "\\widehat{\\mathit{fruit}}"
+	new_title = {1: "$" + orange + "$",
+		     2: "$" + fruit + "$",
+		     3: "$" + orange + "\\lor" + fruit + "$",
+		     4: "$" + orange + "\\lor" + fruit + "$",
+		     5: "$" + orange + "\\land" + fruit + "$",
+		     6: "$" + orange + "\\land" + fruit + "$"
+		     }[year];
 
 	d3.select("#disjunction-title").text(new_title)
 	MathJax.Hub.Queue(["Typeset",MathJax.Hub]);

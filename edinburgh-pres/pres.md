@@ -87,7 +87,7 @@ onnoisseurs. We take a bite from an unusual  fruit. We come away neither nourish
 
 
 
-$\Huge{x\lor y}$
+$\Huge{\widehat{\mathit{orange}}\lor \widehat{\mathit{fruit}}}$
 
 
 
