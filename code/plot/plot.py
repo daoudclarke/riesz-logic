@@ -24,18 +24,18 @@ def plot(values):
     cset = ax.contour(X, Y, Z, zdir='x', offset=-40, cmap=cm.coolwarm)
     cset = ax.contour(X, Y, Z, zdir='y', offset=40, cmap=cm.coolwarm)
 
-    ax.set_xlabel('X')
+    ax.set_xlabel('a')
     ax.set_xlim(0, 1)
-    ax.set_ylabel('Y')
+    ax.set_ylabel('b')
     ax.set_ylim(0, 1)
-    ax.set_zlabel('Z')
+    #ax.set_zlabel('T(A, B)')
     ax.set_zlim(0., 1.)
 
     #ax = Axes3D(fig)
     ax.view_init(elev=45., azim=225)
     #plt.show()
     
-    plt.savefig("lukasiewicz.svg", transparent=True)
+    plt.savefig("vector-add.svg", transparent=True)
 
 def logistic_add(x, y):
     return x*y/(1 - x - y + 2*x*y)
@@ -44,8 +44,8 @@ def lukasiewicz(x, y):
     return np.maximum(0, x + y - 1)
 
 if __name__ == "__main__":
-    values = get_func_values(lukasiewicz)
-    #values = get_func_values(logistic_add)
+    #values = get_func_values(lukasiewicz)
+    values = get_func_values(logistic_add)
     #values = np.nan_to_num(values)
     #values = get_func_values(lambda x, y: x+y)
     #print [x.shape for x in values]

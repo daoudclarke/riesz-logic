@@ -17,7 +17,7 @@ var yAxis = d3.svg.axis()
     .tickFormat(function(d) { return d; }); //Math.round(d / 1e6) + "M"; });
 
 // An SVG element with a bottom-right origin.
-var svg = d3.select("#disjunction").append("svg")
+var svg = d3.selectAll(".disjunction").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -54,6 +54,7 @@ d3.csv("/vectors.csv", function(error, data) {
   // Update the scale domains.
     x.domain([age0, age1]);
     y.domain([people0, people1]);
+    //y.domain([-10, 10]);
 
   // Produce a map from year and birthyear to [male, female].
     data = d3.nest()
@@ -87,7 +88,7 @@ d3.csv("/vectors.csv", function(error, data) {
 	.attr("width", barWidth)
 	.attr("y", y)
 	// .attr("y", function(value) { return y(value - people0); })
-	.attr("height", function(value) { return Math.abs(height - y(Math.abs(value + people0))); });
+	.attr("height", function(value) { return height - y(Math.max(value + people0)); });
 
   // // Add labels to show birthyear.
   //   birthyear.append("text")
@@ -126,7 +127,7 @@ d3.csv("/vectors.csv", function(error, data) {
             .data(function(birthyear) { return data[year][birthyear] || [0, 0]; })
 	    .transition()
             .duration(750)
-	    .attr("y", function(value) { return y(value); })
+	    .attr("y", function(value) { return y(Math.max(0, value)); })
 	    // .attr("y", function(value) { return y(value - people0); })
             .attr("height", function(value) { return Math.abs(height - y(value + people0)); });
 
@@ -137,10 +138,14 @@ d3.csv("/vectors.csv", function(error, data) {
 		     3: "$" + orange + "\\lor" + fruit + "$",
 		     4: "$" + orange + "\\lor" + fruit + "$",
 		     5: "$" + orange + "\\land" + fruit + "$",
-		     6: "$" + orange + "\\land" + fruit + "$"
+		     6: "$" + orange + "\\land" + fruit + "$",
+		     7: "$" + orange + "$",
+		     8: "$-" + orange + "$",
+		     9: "$" + fruit + "-" + orange + "$",
+		     10: "$\\mathit{orange}\\rightarrow\\mathit{fruit}$"
 		     }[year];
 
-	d3.select("#disjunction-title").text(new_title)
+	d3.selectAll(".disjunction-title").text(new_title)
 	MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
     }
 });

@@ -91,8 +91,8 @@ $$\Huge{\widehat{\mathit{orange}}\land \widehat{\mathit{fruit}}}$$
 
 
 
-<div id="disjunction-title">$\widehat{\mathit{orange}}$</div>
-<div id="disjunction"></div>
+<div class="disjunction-title">$\widehat{\mathit{orange}}$</div>
+<div class="disjunction"></div>
 
 
 
@@ -140,7 +140,12 @@ $$\Huge{-\widehat{\mathit{orange}}}$$
 
 
 
-# The Logic
+<div class="disjunction-title">$\widehat{\mathit{orange}}$</div>
+<div class="disjunction"></div>
+
+
+
+# Riesz Logic
 
 
 
@@ -158,7 +163,6 @@ $$\huge{\frac{\phi \rightarrow \psi}{\phi \lor \chi \rightarrow \psi \lor \chi}}
 
 ## Axioms
 
-
 \begin{align}
 &\textrm{R1a} && (\phi \rightarrow \psi) \rightarrow ((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow \chi)) \\\\
 &\textrm{R1b} && ((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow \chi)) \rightarrow (\phi \rightarrow \psi) \\\\
@@ -174,12 +178,12 @@ $$\huge{\frac{\phi \rightarrow \psi}{\phi \lor \chi \rightarrow \psi \lor \chi}}
 
 
 ## Soundness
-$\Rightarrow$ Lattice ordered groups
+$\Rightarrow$ Abelian lattice ordered groups
 
 
 
 ## Completeness
-$\Rightarrow$ The Logic of Equilibrium
+$\Rightarrow$ The Logic of Equilibrium (Galli et al.)
 
 
 
@@ -215,13 +219,77 @@ $\Rightarrow$ The Logic of Equilibrium
 
 
 
-## Łukasiewicz t-norm
+# Riesz Logic and Fuzzy Logic
+
+
+
+## Fuzzy Axioms
+
+\begin{align}
+&\textrm{R1a} && (\phi \rightarrow \psi) \rightarrow ((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow \chi)) \\\\
+&\textrm{R2} && \phi \rightarrow \phi \lor \psi\\\\
+&\textrm{R3} && \phi \lor \psi \rightarrow \psi \lor \phi\\\\
+&\textrm{R4} && (\phi \lor \psi)\lor \psi \rightarrow \phi \lor \psi
+\end{align}
+
+
+
+## Fuzzy logic semantics:
+## <br>
+$$\huge{[0,1]}$$
+
+
+
+
+## Logistic function
+<embed src="Logistic-curve.svg"/>
+
+
+
+## T-norm
+
+
+
+\begin{align}
+T(a, b) &= T(b, a) \\\\
+T(a, b) &\le T(c, d) \text{ if } a \le c  \text{ and } b \le d\\\\
+T(a, T(b, c)) &= T(T(a, b), c)\\\\
+T(a, 1) &= a
+\end{align}
+
+
+
+## Łukasiewicz T-norm
+## <br>
+$$\huge{T_L(a,b) = \max\\{0, a + b - 1\\}}$$
+
+
+
 <embed src="lukasiewicz.svg"/>
 
 
 
-## Vector addition
+## Riesz T-norm?
+
+
+
+## Logistic addition
+
+
+
+$$\huge{T_R(a, b) = \frac{ab}{ab + (1-a)(1-b)}}$$
+
+
+
+<!-- $$\huge{\neg x := 1 - x}$$ -->
+<!-- $$T(a,b) := a \oplus b$$ -->
 <embed src="vector-add.svg"/>
 
 
 
+\begin{align}
+T(a, b) &= T(b, a) \\\\
+T(a, b) &\le T(c, d) \text{ if } a \le c  \text{ and } b \le d\\\\
+T(a, T(b, c)) &= T(T(a, b), c)\\\\
+\color{red}{T(a, 1)} &\color{red}{= a}
+\end{align}
