@@ -1,8 +1,0 @@
-1 P(x) & P(x => y) -> P(y) # label(MP) # label(non_clause).  [assumption].
-3 P(a v 0) # label(BALPI) # label(non_clause) # label(goal).  [goal].
-4 -P(x) | -P(x => y) | P(y) # label(MP).  [clausify(1)].
-8 P(x => x v y) # label(R2).  [assumption].
-15 P(a).  [assumption].
-16 -P(a v 0) # label(BALPI) # answer(BALPI).  [deny(3)].
-56 P(a v x).  [ur(4,a,15,a,b,8,a)].
-57 $F # answer(BALPI).  [resolve(56,a,16,a)].

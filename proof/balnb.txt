@@ -1,7 +1,0 @@
-1 P(x) & P(x => y) -> P(y) # label(MP) # label(non_clause).  [assumption].
-3 P(x => ((x => y) => y)) # label(BALNb) # label(non_clause) # label(goal).  [goal].
-4 -P(x) | -P(x => y) | P(y) # label(MP).  [clausify(1)].
-7 P(((x => y) => (z => y)) => (z => x)) # label(R1b).  [assumption].
-15 -P(c1 => ((c1 => c2) => c2)) # label(BALNb) # answer(BALNb).  [deny(3)].
-19 P(x => ((x => y) => y)).  [ur(4,a,7,a,b,7,a)].
-20 $F # answer(BALNb).  [resolve(19,a,15,a)].
