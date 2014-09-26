@@ -34,7 +34,7 @@ var create_svg = function() {
     //     .attr("dy", ".71em")
     //     .text(2000);
 
-    d3.csv("/vectors.csv", function(error, data) {
+    d3.csv("vectors.csv", function(error, data) {
 
 	// Convert strings to numbers.
 	data.forEach(function(d) {
