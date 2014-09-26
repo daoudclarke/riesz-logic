@@ -293,3 +293,19 @@ T(a, b) &\le T(c, d) \text{ if } a \le c  \text{ and } b \le d\\\\
 T(a, T(b, c)) &= T(T(a, b), c)\\\\
 \color{red}{T(a, 1)} &\color{red}{= a}
 \end{align}
+
+
+
+# Conclusion
+
+
+
+## Vector spaces in CL have a logic
+
+
+
+## Future work: higher order logic
+
+
+
+# Thanks!
