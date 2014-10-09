@@ -1,7 +1,9 @@
 % Bismillahi-r-Rahmani-r-Rahim
 % In the Name of God the Merciful, the Compassionate
 
-\documentclass[preprint,leqno]{elsarticle}
+\documentclass[journal]{IEEEtran}
+%% \documentclass[preprint,leqno]{elsarticle}
+
 %\documentclass{article}
 
 \author{Daoud Clarke}
@@ -21,17 +23,30 @@
 \usepackage{pstricks}
 \usepackage{auto-pst-pdf}
 \usepackage{fancyvrb}
+\usepackage{amsthm}
+\usepackage{verbatimbox}
+\usepackage{cite}
 %\usepackage[pdf]{pstricks}
 %\usepackage{mathabx}
 
-\newdefinition{definition}{Definition}
-\newproof{proof}{Proof}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
 
 %\newcommand{\interp}[1]{\ldbrack #1 \rdbrack}
 \newcommand{\interp}[1]{\llbracket #1 \rrbracket}
 
 \begin{document}
 
+
+
+% Note that keywords are not normally used for peerreview papers.
+%% \begin{IEEEkeywords}
+
+%% \end{IEEEkeywords}
+
+
+\maketitle
 
 \begin{abstract}
 We introduce Riesz Logic, whose models are lattice ordered groups,
@@ -47,12 +62,14 @@ two logics may be related; Riesz Logic may thus be considered a new
 fuzzy logic.
 \end{abstract}
 
-\maketitle
+\begin{IEEEkeywords}
+Vector Lattice, Riesz Space, Fuzzy Logic, Distributional Semantics
+\end{IEEEkeywords}
 
 
 \section{Introduction}
 
-Much of the original motivation for fuzzy logic revolved around
+\IEEEPARstart{M}{uch} of the original motivation for fuzzy logic revolved around
 linguistic intuitions, for example the notion that ``tall'' is not a
 black and white concept, but that there are degrees of
 tallness. Indeed, one of the proposed applications for these ideas was
@@ -95,12 +112,12 @@ tackling problems in natural language processing.
 %% examples are vector lattices, or Riesz spaces.
 
 RL has the following inference rules:\\
-\begin{minipage}{0.49\textwidth}
+\begin{minipage}{0.49\columnwidth}
 \begin{gather}
   \tag{MP} \frac{\phi, \phi \rightarrow \psi}{\psi}
 \end{gather}
 \end{minipage}
-\begin{minipage}{0.49\textwidth}
+\begin{minipage}{0.49\columnwidth}
 \begin{gather}
   \tag{RI} \frac{\phi \rightarrow \psi}{\phi \lor \chi \rightarrow \psi \lor \chi}
 \end{gather}
@@ -183,8 +200,9 @@ been performed. Instead, these dimensions are often considered to
 correspond to hidden ``latent'' aspects of meaning.
 
 
-\begin{figure}
-\begin{Verbatim}[fontsize=\scriptsize]
+\begin{figure*}
+\begin{center}
+\begin{BVerbatim}[fontsize=\scriptsize]
 end some medicine for her, but she will need fruit and  milk, and some other special things that
 our own. Here we give you ideas for foliage, fruit and  various festive trimmings that you can i
 part II). However, other strategies can bear fruit  and are described under three sections which
@@ -214,11 +232,11 @@ ITCHEN GARDEN    FRUIT    Cut out cankers on fruit trees, except those on peache
 ps  remain, then stir in the sugar and dried fruit. Using a round-  ended knife, stir in the mil
  of a homeland, well others dream too,    De fruit was forbidden an now yu can't chew,    How ca
 onnoisseurs. We take a bite from an unusual  fruit. We come away neither nourished nor ravished,
-\end{Verbatim}
-
+\end{BVerbatim}
+\end{center}
 \caption{Occurrences and some context of occurrences of the word \emph{fruit} in the British National Corpus.}
 \label{fig:fruit}
-\end{figure}
+\end{figure*}
 
 \begin{table}
 \newcommand\T{\rule[-1.2ex]{0pt}{3.7ex}}
@@ -281,7 +299,7 @@ at least as frequently as $x$ in all contexts. Figure
 \ref{fig:orangefruit} gives an example of the meet operation for
 hypothetical word frequency vectors.
 
-\begin{figure}
+\begin{figure*}
 \begin{center}
 \input{orangefruit2.pst}
 \caption{Vector representations of the terms \emph{orange} and
@@ -289,7 +307,7 @@ hypothetical word frequency vectors.
   area).}
 \label{fig:orangefruit}
 \end{center}
-\end{figure}
+\end{figure*}
 
 
 \section{Interpretations}
@@ -363,7 +381,7 @@ same when their behaviour is translated to this space.
     \caption{Logistic addition}
     \label{fig:logistic}
   \end{subfigure}
-  \caption{Mapping real numbers to the interval $[0,1]$ gives a new
+  \caption{Mapping real numbers to the interval $(0,1)$ gives a new
     operation corresponding to addition (\subref{fig:logistic}), which
     bears some similarities to t-norms (\subref{fig:lukasiewicz}).}
   \label{fig:tnorm}
@@ -483,13 +501,13 @@ F(\psi)$. The logic has the following axioms:
   (\phi\rightarrow\psi)
 \end{align}
 and the following inference rules:\\
-\begin{minipage}{0.49\textwidth}
+\begin{minipage}{0.49\columnwidth}
 \begin{gather}
   \tag{BALMP} \frac{\phi, \phi \rightarrow \psi}{\psi},\\
   \tag{BALPI} \frac{\phi}{\phi^+},
 \end{gather}
 \end{minipage}
-\begin{minipage}{0.49\textwidth}
+\begin{minipage}{0.49\columnwidth}
 \begin{gather}
   \tag{BALG} \frac{\phi, \psi}{\phi \rightarrow \psi},\\
   \tag{BALMI} \frac{(\phi\rightarrow\psi)^+}{(\phi^+\rightarrow\psi^+)^+}.
@@ -525,7 +543,9 @@ inference rule
 $$\frac{\phi_1,\phi_2,\ldots}{\psi},$$
 we need the following inference rules in RL:
 $$\frac{\phi_1,\phi_2,\ldots, \phi_1\rightarrow 0, \phi_2\rightarrow
-  0, \ldots}{\psi}\text{ and }\frac{\phi_1,\phi_2,\ldots,
+  0, \ldots}{\psi}$$
+and
+$$\frac{\phi_1,\phi_2,\ldots,
   \phi_1\rightarrow 0, \phi_2\rightarrow 0, \ldots}{\psi \rightarrow
   0}.$$
 For each rule BALR in BAL, we will refer to these two versions as
@@ -540,9 +560,11 @@ BALMP+ follows trivially from the assumption of the rule MP in RL. To see BALMP$
 
 \begin{proof}[BALPI]
 BALPI+ follows from R2. To see BALPI$-$:
-\begin{align*}
+\[
+\begin{array}{ll}
 \input{proof-tex/balpi2-proof}
-\end{align*}
+\end{array}
+\]
 \end{proof}
 
 \begin{proof}[BALG+]
@@ -647,9 +669,7 @@ of Compositional and Distributional Compositional Semantics: Theory
 and Applications''.
 
 
-\section*{References}
-
-\bibliographystyle{elsarticle-harv}
+\bibliographystyle{IEEEtran}
 \bibliography{JW2012}
 
 

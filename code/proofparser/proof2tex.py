@@ -91,10 +91,10 @@ def to_latex(interpretation):
                 except KeyError:
                     new_line += line[i]
                 i += 1
-        tag = "(%d)" % number
+        tag = "%d." % number
         uses_labels = map(str, uses_labels)
-        uses = '\\text{(%s)}' % ', '.join(uses_labels)
-        result = '& ' + tag + ' && ' + new_line + ' & ' + uses + r'\\'
+        uses = '\\text{by %s}' % ', '.join(uses_labels)
+        result = '' + tag + ' & ' + new_line + ' \hfill ' + uses + r'\\'
         yield result
 
 if __name__ == "__main__":
