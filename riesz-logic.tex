@@ -292,31 +292,11 @@ hypothetical word frequency vectors.
 \end{figure}
 
 
-\section{Motivation}
-
-
-\section{Relation to Fuzzy Logic}
-
-\begin{figure}
-  \begin{subfigure}{0.49\textwidth}
-    \includegraphics[width=\textwidth]{lukasiewicz.pdf}
-    \caption{\L ukasiewicz t-norm}
-    \label{fig:lukasiewicz}
-  \end{subfigure}
-  \begin{subfigure}{0.49\textwidth}
-    \includegraphics[width=\textwidth]{rieszfunc.pdf}
-    \caption{Logistic addition}
-    \label{fig:logistic}
-  \end{subfigure}
-  \caption{Mapping real numbers to the interval $[0,1]$ gives a new
-    operation corresponding to addition (\subref{fig:logistic}), which
-    bears some similarities to t-norms (\subref{fig:lukasiewicz}).}
-\end{figure}
-
 \section{Interpretations}
 
-We prove the soundness and completeness of RL with respect to
-abelian lattice ordered groups.
+Later we will prove the soundness and completeness of RL with respect
+to abelian lattice ordered groups, which generalise Riesz spaces, with
+vector addition and negation forming the group operations.
 
 \begin{definition}[Lattice Ordered Group]
   A partially ordered group is a tuple $\langle G, +, \le\rangle$ such
@@ -344,13 +324,83 @@ defined recursively as follows:
 \item $\interp{\phi} = F(\phi)$
 \item $\interp{x \rightarrow y} = \interp{y} - \interp{x}$
 \item $\interp{x \lor y} = \interp{x} \lor \interp{y}$
+\item $\interp{0} = 0$
 \end{itemize}
+Note that the symbols $\lor, \land$ and $0$ are used both as symbols
+in the logic (on the left hand side) and in their vector space sense
+(on the right hand side).
+
 The formula $x$ is interpreted as asserting that $0 \le
 \interp{x}$. Thus, for example, the formula $\phi \rightarrow \psi$ is
 interpreted as the assertion $0 \le F(\psi) - F(\phi)$, or $F(\phi)
 \le F(\psi)$. A formula $x$ is satisfiable if there is some
 interpretation such that $0 \le \interp{x}$; it is a theorem or
 tautology if $0 \le \interp{x}$ for all interpretations.
+
+\section{Relation to Fuzzy Logic}
+
+Our goal is to show that RL may be viewed as a type of fuzzy logic,
+although a non-standard one, both to aid in gaining an intuition for
+the nature of the logic, and to demonstrate its potential as a
+reasoning system.
+
+Most fuzzy logics are interpreted in terms of the real interval
+$[0,1]$. Consider the vector lattice of the real numbers (the
+single dimensional vector space). This can be mapped to the open
+interval $(0,1)$, for example using the logistic function:
+$$f(x) = \frac{1}{1 + e^{-x}}$$
+The operations $\land$ and $\lor$ (maximum and minimum) behave the
+same when their behaviour is translated to this space.
+
+\begin{figure}
+  \begin{subfigure}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{lukasiewicz.pdf}
+    \caption{\L ukasiewicz t-norm}
+    \label{fig:lukasiewicz}
+  \end{subfigure}
+  \begin{subfigure}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{rieszfunc.pdf}
+    \caption{Logistic addition}
+    \label{fig:logistic}
+  \end{subfigure}
+  \caption{Mapping real numbers to the interval $[0,1]$ gives a new
+    operation corresponding to addition (\subref{fig:logistic}), which
+    bears some similarities to t-norms (\subref{fig:lukasiewicz}).}
+  \label{fig:tnorm}
+\end{figure}
+
+Many fuzzy logics are derived from T-norms, which have the following
+properties:
+\begin{align}
+\tag{Commutativity} T(a, b) &= T(b, a) \\
+\tag{Monotonicity} T(a, b) &\le T(c, d) \text{ if } a \le c  \text{ and } b \le d\\
+\tag{Associativity} T(a, T(b, c)) &= T(T(a, b), c)\\
+\tag{Identity} T(a, 1) &= a
+\end{align}
+For example, the \L ukasiewicz T-norm is defined as $T_L(a,b) =
+\max\{0,a + b - 1\}$.
+
+A natural question to ask is whether we can define a T-norm for
+RL. Vector space addition seems like a natural candidate for this,
+because of its similarity to $T_L$. Note that in RL, addition $\oplus$
+can be defined by
+$$\phi \oplus \psi := (\phi \rightarrow 0) \rightarrow \psi.$$
+Addition of two real numbers translates to the interval $(0,1)$ as:
+$$T_R(a, b) = \frac{ab}{ab + (1-a)(1-b)}$$
+See figure \ref{fig:tnorm} for a three dimensional depiction of $T_L$
+and $T_R$. The first three of these properties are satisfied by $T_R$
+since they are properties of addition of real numbers, only the
+identity property is unsatisfied. Instead $T_R$ is in general
+undefined for $a$ or $b$ equal to 1, although clearly for $a \neq 0$,
+$T_R(a,1) = 1$, a quite different property from that of T-norms.
+
+Thus RL has some very similar properties to fuzzy logics. The lattice
+operations of RL correspond to the weak conjunction and disjunction of
+fuzzy logics, whilst vector addition (defined implicitly via the
+$\rightarrow$ operation) corresponds to strong conjunction. The major
+difference between RL and fuzzy logics is that there are no constants
+for ``true'' or ``false'', only the constant 0 representing complete
+uncertainty.
 
 \section{Soundness}
 
