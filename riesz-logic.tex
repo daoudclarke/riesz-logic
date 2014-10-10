@@ -21,7 +21,6 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{pstricks}
-\usepackage{auto-pst-pdf}
 \usepackage{fancyvrb}
 \usepackage{amsthm}
 \usepackage{verbatimbox}
@@ -49,9 +48,9 @@
 \maketitle
 
 \begin{abstract}
-We introduce Riesz Logic, whose models are lattice ordered groups,
-which generalise Riesz spaces (vector lattices), and show soundness
-and completeness. Our motivation is to provide a logic for
+We introduce Riesz Logic, whose models are abelian lattice ordered
+groups, which generalise Riesz spaces (vector lattices), and show
+soundness and completeness. Our motivation is to provide a logic for
 distributional semantics of natural language, where words are
 typically represented as elements of a vector space whose dimensions
 correspond to contexts in which words may occur. This basis provides a
@@ -303,7 +302,8 @@ hypothetical word frequency vectors.
 
 \begin{figure*}
 \begin{center}
-\input{orangefruit2.pst}
+%% \input{orangefruit2.pst}
+\includegraphics{riesz-logic-pics.pdf}
 \caption{Vector representations of the terms \emph{orange} and
   \emph{fruit} and their vector lattice meet (the darker shaded
   area).}
@@ -489,22 +489,22 @@ group, which we also denote 0.
 \end{align*}
 %% where $x^+ = x\lor 0$ and $x^- = (-x)\lor 0$ are the positive and
 %% negative parts of $x$ respectively.
-The identity $x = x^+ - x^-$ is
-well known for lattice ordered groups, and can be shown by $x + x^- =
-x + (-x)\lor 0 = (x - x)\lor(x + 0) = 0\lor x = x^+$.
+The identity $x = x^+ - x^-$ is well known for abelian lattice ordered
+groups, and can be shown by $x + x^- = x + (-x)\lor 0 = (x - x)\lor(x
++ 0) = 0\lor x = x^+$.
 \end{proof}
 
 \section{Completeness}
 
 We show completeness by relating RL to BAL \cite{Galli:04}. The
-semantics of BAL is also lattice ordered groups, but a statement is
-interpreted as stating equality with zero. BAL has the primitive
-binary operation $\rightarrow$ and unary operation ${}^+$. The former
-is interpreted as in RL and the latter has the interpretation
-$\interp{x^+} = \interp{x}^+$, i.e.~it maps elements to their positive
-parts. Thus the statement $\phi \rightarrow \psi$ in BAL is
-interpreted as an assertion that $F(\psi) - F(\phi) = 0$ or $F(\phi) =
-F(\psi)$. The logic has the following axioms:
+semantics of BAL is also abelian lattice ordered groups, but a
+statement is interpreted as stating equality with zero. BAL has the
+primitive binary operation $\rightarrow$ and unary operation
+${}^+$. The former is interpreted as in RL and the latter has the
+interpretation $\interp{x^+} = \interp{x}^+$, i.e.~it maps elements to
+their positive parts. Thus the statement $\phi \rightarrow \psi$ in
+BAL is interpreted as an assertion that $F(\psi) - F(\phi) = 0$ or
+$F(\phi) = F(\psi)$. The logic has the following axioms:
 \begin{align}
   \tag{BALB} &(\phi \rightarrow \psi) \rightarrow ((\chi \rightarrow \phi)
   \rightarrow (\chi \rightarrow \psi))\\
@@ -573,26 +573,26 @@ BALR+ and BALR$-$ respectively.
 \begin{proof}[BALMP]
 BALMP+ follows trivially from the assumption of the rule MP in RL. To see BALMP$-$:
 \begin{align}
-\input{proof-tex/balmp-proof}
+\input{balmp-proof}
 \end{align}
 \end{proof}
 
 \begin{proof}[BALPI]
 BALPI+ follows from R2. To see BALPI$-$:
 \begin{align}
-\input{proof-tex/balpi2-proof}
+\input{balpi2-proof}
 \end{align}
 \end{proof}
 
 \begin{proof}[BALG+]
 \begin{flalign*}
-\input{proof-tex/balg1-proof}
+\input{balg1-proof}
 \end{flalign*}
 \end{proof}
 
 \begin{proof}{BALG$-$}
 \begin{flalign*}
-\input{proof-tex/balg2-proof}
+\input{balg2-proof}
 \end{flalign*}
 \end{proof}
 
@@ -603,12 +603,12 @@ following proof, which demonstrates that if the positive part of
 $\alpha \rightarrow \beta$ is less than zero, then $\beta \rightarrow
 \alpha$:
 \begin{flalign*}
-\input{proof-tex/balmi2a-proof}
+\input{balmi2a-proof}
 \end{flalign*}
 Given this, we then show that $(\alpha \lor 0 \rightarrow \beta \lor
 0) \rightarrow 0$:
 \begin{flalign*}
-\input{proof-tex/balmi2b-proof}
+\input{balmi2b-proof}
 \end{flalign*}
 Finally, we make use of BALPI$-$ to show that we can take the
 disjunction with 0 on the left-hand side.  Thus given $(\alpha
@@ -624,19 +624,19 @@ its converse as BALA$-$. Note that BALC is its own converse.
 
 \begin{proof}[BALB+]
 \begin{flalign*}
-\input{proof-tex/balba}
+\input{balba}
 \end{flalign*}
 \end{proof}
 
 \begin{proof}[BALB$-$]
 \begin{flalign*}
-\input{proof-tex/balbb}
+\input{balbb}
 \end{flalign*}
 \end{proof}
 
 \begin{proof}[BALC]
 \begin{flalign*}
-\input{proof-tex/balc}
+\input{balc}
 \end{flalign*}
 \end{proof}
 
@@ -659,7 +659,7 @@ there is a tautology $\phi$ in RL.
 
 \begin{proof}[Asserting Positivity]
 \begin{flalign*}
-\input{proof-tex/pos}
+\input{pos}
 \end{flalign*}
 \end{proof}
 
