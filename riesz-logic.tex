@@ -355,7 +355,9 @@ interpreted as the assertion $0 \le F(\psi) - F(\phi)$, or $F(\phi)
 interpretation such that $0 \le \interp{x}$; it is a theorem or
 tautology if $0 \le \interp{x}$ for all interpretations.
 
-\section{Relation to Fuzzy Logic}
+\section{Relation to Fuzzy Logic and Neural Networks}
+
+\subsection{Fuzzy Logic}
 
 Our goal is to show that RL may be viewed as a type of fuzzy logic,
 although a non-standard one, both to aid in gaining an intuition for
@@ -422,6 +424,16 @@ $\rightarrow$ operation) corresponds to strong conjunction. The major
 difference between RL and fuzzy logics is that there are no constants
 for ``true'' or ``false'', only the constant 0 representing complete
 uncertainty.
+
+\subsection{Neural Networks}
+
+Recent work in deep neural networks \cite{Dahl:13} has shown that
+replacing the sigmoid function for activation with a ``rectified
+linear unit'' can improve accuracy and training time. A rectified
+linear unit is simply the function $f(x) = \max(x, 0)$, which is
+equivalent to $f(x) = x^+$ in vector lattice notation. This opens up
+the possibility of using RL in combination with neural networks, a
+potential new approach to neuro-fuzzy modelling \cite{Lin:91,Jang:95,Abe:12}.
 
 \section{Soundness}
 
@@ -535,6 +547,8 @@ proof of completeness is thus in three parts:
   \item We show that for every tautology in BAL of the form
     $(x\rightarrow 0)^+$, there is a tautology $x$ in RL.
 \end{itemize}
+
+Proofs were constructed with the help of Prover9 \cite{McCune:05}.
 
 \subsection{Inference Rules}
 
