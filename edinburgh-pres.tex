@@ -1,0 +1,617 @@
+% Bismillahi-r-Rahmani-r-Rahim
+% $Header$
+
+\documentclass{beamer}
+
+% This file is a solution template for:
+
+% - Talk at a conference/colloquium.
+% - Talk length is about 20min.
+% - Style is ornate.
+
+
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+\newlength{\wideitemsep}
+\setlength{\wideitemsep}{\itemsep}
+\addtolength{\wideitemsep}{10pt}
+\let\olditem\item
+\renewcommand{\item}{\setlength{\itemsep}{\wideitemsep}\olditem}
+
+
+\newcommand{\context}[1]{\ensuremath{\widehat{\mathit{#1}}}}
+\newcommand{\nl}[1]{\sl{#1}}
+
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  % or ...
+
+%  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+
+\title%[Short Paper Title] % (optional, use only with long paper titles)
+{A Logic of Vector Lattices}
+
+%\subtitle
+%{Include Only If Paper Has a Subtitle}
+
+\author[Department of Informatics, University of Sussex] % (optional, use only with lots of authors)
+{Daoud Clarke}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[University of Sussex] % (optional, but mostly needed)
+{
+  Department of Informatics\\
+  University of Sussex}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[Edinburgh] % (optional, should be abbreviation of conference name)
+{Edinburgh University, 2nd--3rdth October 2014}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+% \subject{Computational Linguistics}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+%%% Delete this, if you do not want the table of contents to pop up at
+%%% the beginning of each subsection:
+%\AtBeginSubsection[]
+%{
+%  \begin{frame}<beamer>{Outline}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Introduction}
+\subsection{Background}
+
+\begin{frame}{Overview}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+% Structuring a talk is a difficult task and the following structure
+% may not be suitable. Here are some rules that apply for this
+% solution: 
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+% - A conference audience is likely to know very little of what you
+%   are going to talk about. So *simplify*!
+% - In a 20min talk, getting the main ideas across is hard
+%   enough. Leave out details, even if it means being less precise than
+%   you think necessary.
+% - If you omit details that are vital to the proof/implementation,
+%   just say so once. Everybody will be happy with that.
+
+\begin{frame}{Compositional Distributional Semantics}
+\begin{itemize}
+\item Fixed composition
+\begin{itemize}
+\item Addition, pointwise multiplication, tensor product\ldots
+\end{itemize}
+\item Category-theoretic approach
+\begin{itemize}
+\item Words are linear functions
+\item E.g.~nouns are vectors, adjectives are matrices
+\end{itemize}
+\item Quotient algebra approach
+\item Recursive Matrix-Vector Model (Socher et al.)
+\end{itemize}
+\end{frame}
+
+\subsection{Beyond Symmetric Similarity}
+
+\begin{frame}{Beyond Symmetric Similarity}
+\begin{itemize}
+\item Existing approaches focus on symmetric similarity
+\begin{itemize}
+\item Is this sufficient for all aspects of meaning?
+\end{itemize}
+\item Entailment
+\item Consistency
+\item Contradiction
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Entailment}
+\begin{itemize}
+\item Logical entailment
+\item Textual entailment
+\begin{itemize}
+\item $T$ entails $H$ if, typically, a human reading $T$ would infer that $H$ is most likely true
+\item Fuzzy
+\end{itemize}
+\item Lexical entailment
+\begin{itemize}
+\item \emph{cat} IS-A \emph{animal}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Does T entail H?}
+\begin{itemize}
+\item[T] \emph{Two women from two counties are dead and police have some clues as to who murdered them.}
+\item[H] \emph{Police gather clues in double assassination.}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Why Textual Entailment?}
+\begin{itemize}
+\item Useful
+\begin{itemize}
+\item Retrieval, question answering, summarization\ldots
+\end{itemize}
+\item Fuzzy
+\begin{itemize}
+\item Suited to distributional approach
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+% \begin{frame}
+% \begin{itemize}
+% \item Important in logical semantics
+% \item Logical entailment
+% \begin{itemize}
+% \item Theoretically well founded
+% \item Brittle
+% \end{itemize}
+% \end{itemize}
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Mathematics}
+% \begin{itemize}
+% \item Inner product is mathematically attractive
+% \begin{itemize}
+% \item Invaluable in physics
+% \item What justification for semantics?
+% \end{itemize}
+% \item Cosine similarity
+% \begin{itemize}
+% \item Similarity is less fundamental than entailment
+% \end{itemize}
+% \end{itemize}
+% \end{frame}
+
+\subsection{Distributional Entailment}
+
+\begin{frame}{Distributional Entailment}
+\begin{itemize}
+\item Distributional generality
+\begin{itemize}
+\item \emph{Words that occur in a wider range of contexts have more
+    general meanings}
+\end{itemize}
+% \item Simplifying assumptions
+% \begin{itemize}
+% \item Ordering implicit in vector space
+% \end{itemize}
+\item ``Distributional entailment''
+\begin{itemize}
+\item Hypothesise correlation with textual entailment
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Vector Lattice}
+\begin{itemize}
+\item $V$ is partially ordered by $\le$ if
+\begin{itemize}
+\item if $x \le y$ then $x + z \le y + z$\\
+\item if $x \le y$ then $\alpha x \le \alpha y$
+\end{itemize}
+where $\alpha \ge 0$
+\item $V$ is a vector lattice (Riesz space) if
+\begin{itemize}
+\item $\le$ defines a lattice on $V$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Degrees of Distributional Entailment}
+\begin{itemize}
+\item Vector lattice allows partial distributional entailment
+$$\mathrm{DE}(x,y) = \frac{\|x \land y\|}{\|x\|}$$
+\item Form of conditional probability
+\begin{itemize}
+\item Assume $\|\cdot\|$ defines an AL-space
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Vector Lattice Example}
+\begin{itemize}
+\item Finite dimensional vector space $V$
+\item $u\land v$ is component wise minimum
+\item $u\lor v$ is component wise maximum
+\begin{center}
+\includegraphics[scale=0.3]{orange.png}
+\end{center}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Positive Cones}
+\begin{center}
+\includegraphics[scale=0.9]{cone.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Positive Cone Definition}
+\begin{itemize}
+\item A \alert{cone} is a subset $C$ of a vector space satisfying
+\begin{eqnarray*}
+C + C &\subseteq& C\\
+\alpha C &\subseteq& C \quad \text{for all} \quad \alpha \ge 0\\
+C \cap (-C) &=& \{0\}
+\end{eqnarray*}
+\item Define $u \le v$ iff $v - u \in C$
+\end{itemize}
+\end{frame}
+
+% \begin{frame}{Positive Cones}
+% \begin{itemize}
+% \item Some cones define a \alert{lattice}
+% \begin{itemize}
+% \item Unique upper bound $u\lor v$ called \alert{join}
+% \item Unique lower bound $u\land v$ called \alert{meet}
+% \end{itemize}
+% \end{itemize}
+% \end{frame}
+
+\begin{frame}{Positive Cones}
+\begin{center}
+\includegraphics[scale=0.9]{cones.pdf}
+\end{center}
+\end{frame}
+
+% \begin{frame}{Positive Cones}
+% \begin{itemize}
+% \item If we want $u \le v$ then $v - u$ must be positive
+% \item Generate a \alert{positive cone} $C$ using all such pairs
+% \item Define $u \le v$ iff $v - u \in C$
+% \end{itemize}
+% \end{frame}
+
+\section{Proposal}
+
+\subsection{New Idea}
+
+\begin{frame}{New Idea}
+\begin{itemize}
+\item Lattice order is more important than composition
+\begin{itemize}
+\item Lattice order $\rightarrow$ distributional entailment $\rightarrow$ meaning
+\item Use tensor product for composition
+\item Learn lattice order
+\end{itemize}
+\item Applications:
+\begin{itemize}
+\item Learning composition semantics
+\item Supervised Ontology learning
+\item Textual entailment
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{Motivation}
+
+\begin{frame}{Learning Composition Semantics}
+\begin{itemize}
+\item Allow meanings to coexist
+\begin{itemize}
+\item Coarse and fine-grained
+\item Compositional and non-compositional
+\end{itemize}
+\item Use tensor product as composition
+\item Obtain vectors for words and pairs of words
+\begin{itemize}
+\item $\context{red}, \context{cat}, \context{red\ cat}$
+\end{itemize}
+\item Learn an order on the space such that
+\begin{itemize}
+\item $\context{red}\otimes\context{cat}\le \context{red\ cat}$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Adjectives Example}
+\begin{itemize}
+\item How does this work in practice?
+\begin{itemize}
+\item $\context{red}\otimes\context{cat}\le \context{red\ cat}$
+\item $A =$ adjective space, $N =$ noun space
+\item Learn a lattice order on $(A\otimes N)\oplus N$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Compositionality}
+\begin{itemize}
+\item No assumption that $a \le b$ implies $a\otimes c \le b \otimes c$
+\item We can use this assumption where we like
+\begin{itemize}
+\item E.g.~relate $A\otimes A\otimes N$ to $A\otimes N$
+\end{itemize}
+\item We can also impose
+
+\begin{align*}
+x \otimes \widehat{\mathrm{and}} \otimes y &\le x & x &\le x \otimes \widehat{\mathrm{or}} \otimes y\\
+x \otimes \widehat{\mathrm{and}} \otimes y &\le y & y &\le x \otimes \widehat{\mathrm{or}} \otimes y
+\end{align*}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Supervised Ontology Learning}
+\begin{itemize}
+\item Given a new word, where does it fit in ontology?
+\item Obtain vectors for words
+\item Learn an order such that
+\begin{itemize}
+\item $\context{x} \le \context{y}$ iff $x$ IS-A $y$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Learning Textual Entailment}
+\begin{itemize}
+\item New machine learning approach to textual entailment
+\item Use a kernel to implicitly define vector space
+\item Learn an order such that, for training set
+$$\context{T} \le \context{H}$$
+\end{itemize}
+\end{frame}
+
+% \begin{frame}{New Lattice Order Example}
+% \begin{itemize}
+% \item Use tensor product as composition
+% \item If we want $\context{red}\cdot \context{cat} \le \context{cat}$
+% \item Define an ordering such that this is true
+% \end{itemize}
+% \end{frame}
+
+\subsection{Approach}
+
+
+% \begin{frame}{Positive Cones and Adjectives}
+% \begin{itemize}
+% \item Intersective adjectives (not e.g.~``fake'')
+% \begin{itemize}
+% \item $\context{red}\cdot \context{cat} \le \context{cat}$
+% \end{itemize}
+% \item Use tensor product as composition
+% \item With basis vectors
+% \begin{itemize}
+% \item  $n_i$ for nouns
+% \item $a_j$ for adjectives
+% \end{itemize}
+% \item Put $$n_i - a_j\otimes n_i$$ into the generating cone
+% \end{itemize}
+% \end{frame}
+
+
+\begin{frame}{Learning Cones}
+\begin{itemize}
+\item Given instances:
+\begin{itemize}
+\item Some we want to be positive (e.g. $\context{H} - \context{T}$)
+\item Some not positive
+\end{itemize}
+\item Learn a cone which contains only positive instances
+\end{itemize}
+\end{frame}
+
+% Ongoing work - how are we proceeding to tackle the task
+\begin{frame}{Learning Cones: Approach}
+\begin{itemize}
+\item Algorithms:
+\begin{itemize}
+\item Support Vector Machines
+\item Random greedy search
+\item Gradient descent
+\end{itemize}
+\item Toy data (noisy/no-noise)
+\item Real data
+\begin{itemize}
+\item Machine learning datasets
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Support Vector Machines}
+\begin{itemize}
+\item Cone is intersection of half-spaces
+\item Learn with kernel?
+\begin{itemize}
+\item Hyperplane $\rightarrow$ linear combination of instance vectors
+\item Not all hyperplanes correspond to cones
+\end{itemize}
+\item Learn multiple hyperplanes; intersect
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Support Vector Machines}
+\begin{center}
+\includegraphics[scale=0.5]{first_plane.pdf}
+\end{center}
+\end{frame}
+
+%% \begin{frame}{Support Vector Machines}
+%% \begin{center}
+%% \includegraphics[scale=0.5]{second_plane.pdf}
+%% \end{center}
+%% \end{frame}
+
+\begin{frame}{Matrix-defined Cones}
+\begin{itemize}
+\item Find order $\sqsubseteq$ for $V$, dimensionality $n$
+\item Let $M$ be an $n\times n$ matrix
+\item Define $u \sqsubseteq v$ if $Mu \le Mv$ (component-wise)
+\item Find $M$ such that
+\begin{itemize}
+\item $Mu \ge 0$ when $u$ is positive
+\item $Mu \ngeq 0$ otherwise
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Learning Cone Matrix}
+\begin{itemize}
+\item Hypothesise problem is convex
+\item Randomised greedy search
+\item Gradient descent
+\begin{itemize}
+\item Dimensionality reduction
+\item $M$ is an $n\times m$ matrix where $m \le n$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Preliminary Results: Toy Data}
+\begin{itemize}
+\item Generate a random cone
+\begin{itemize}
+\item 10 dimensional data
+\item 3 vectors to generate cone
+\end{itemize}
+\item Generate random points (half positive)
+\item Gradient descent works best
+\begin{itemize}
+\item Obtains 94\% F1 score on held out data
+\item F1 score on training set is 100\%
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Preliminary Results: Real Data}
+\begin{itemize}
+\item MNIST dataset: handwritten digits 0--9
+\item Use One-Vs-Rest to deal with multiple classes
+\item F1 score on training set is 97\%
+\begin{center}
+\begin{tabular}{ll}
+Classifier & F1 score \\
+\hline
+Na\"\i ve Bayes & 81\% \\
+Decision Tree & 64\% \\
+Cone & 71\%
+\end{tabular}
+\end{center}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+\item Symmetric similarity $\neq$ meaning
+\item Hypothesis
+\begin{itemize}
+\item Vector lattice orders can be used to represent entailment 
+\end{itemize}
+\item We can learn vector lattice orders from data
+\end{itemize}
+\end{frame}
+
+% All of the following is optional and typically not needed. 
+\appendix
+\section<presentation>*{\appendixname}
+\subsection<presentation>*{References}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle<presentation>{References}
+  \begin{thebibliography}{10}
+    
+  \beamertemplatebookbibitems
+  % Start with overview books.
+
+  \bibitem{Clarke:07}
+    Daoud Clarke
+    \newblock {\em Context-theoretic Semantics for Natural Language}
+    \newblock DPhil thesis, University of Sussex
+ 
+    
+  % \beamertemplatearticlebibitems
+  % % Followed by interesting articles. Keep the list short. 
+
+  % \bibitem{Clarke:10}
+  %   Daoud Clarke, Rudi Lutz and David Weir
+  %   \newblock Semantic Composition with Quotient Algebras
+  %   \newblock GEMS-2010
+  %   2000.
+
+  % \bibitem{Clark:08}
+  %   Stephen Clark, Bob Coecke and Mehrnoosh Sadrzadeh
+  %   \newblock A Compositional Distributional Model of Meaning
+  %   \newblock QI-2008
+  %   2000.
+  \end{thebibliography}
+\end{frame}
+
+\end{document}
+
+
