@@ -1,19 +1,17 @@
-# A Logic of Vector Lattices
+# A Logic for Vector Space Semantics
 
 Daoud Clarke, University of Sussex
 
-2nd-3rd October, University of Edinburgh
+14th January 2015
+
+Artificial Intelligence Group Seminar, University of York
 
 
 
 ## Overview
 
- - A new logic
+ - A Logic for Vector Space Semantics
  - Relation to Fuzzy logic
-
-
-
-# A New Logic
 
 
 
@@ -39,11 +37,13 @@ $$\Huge{x \rightarrow y \qquad\qquad \neg x}$$
 
 
 
-## But vector spaces are too boring&hellip;
+## king - man + woman = queen
+
+(Mikolov et al)
 
 
 
-## We need extra structure
+## But vector spaces have too little structure &hellip;
 
 
 
@@ -82,6 +82,7 @@ onnoisseurs. We take a bite from an unusual  fruit. We come away neither nourish
 
 
 ## Basis $\Rightarrow$ Structure
+$\Rightarrow$ Vector Lattice (Riesz Space)
 
 
 
@@ -100,6 +101,16 @@ $$\Huge{\widehat{\mathit{orange}}\land \widehat{\mathit{fruit}}}$$
 
 
 
+$$\Huge{{\mathit{orange}}\rightarrow {\mathit{fruit}}}$$
+# <br>
+$$\Huge{\neg{\mathit{orange}}}$$
+
+
+
+## What is truth?
+
+
+
 ## Give up standard propositional calculus
 
 
@@ -109,16 +120,6 @@ $$\Huge{\widehat{\mathit{orange}}\land \widehat{\mathit{fruit}}}$$
 
 
 ## Accept negative values
-
-
-
-$$\Huge{{\mathit{orange}}\rightarrow {\mathit{fruit}}}$$
-# <br>
-$$\Huge{\neg{\mathit{orange}}}$$
-
-
-
-## What is truth?
 
 
 
@@ -145,92 +146,38 @@ $$\Huge{-\widehat{\mathit{orange}}}$$
 
 
 
-# Riesz Logic
+## Vector lattices are abelian lattice ordered groups
+
+$\Rightarrow$ Abelian Logic (Meyer and Slaney)
 
 
 
-## Modus Ponens
-### <br>
-$$\huge{\frac{\phi,\ \phi \rightarrow \psi}{\psi}}$$
+## Abelian Logic (from A to Z)
+
+Paraconsistent Logic: Essays on the Inconsistent (1989) 
+
+## A, Still Adorable
+
+Paraconsistency: the Logical Way to the Inconsistent (2000)
 
 
 
-## RI
-### <br>
-$$\huge{\frac{\phi \rightarrow \psi}{\phi \lor \chi \rightarrow \psi \lor \chi}}$$
+# Abelian Logic and Fuzzy Logic
 
 
 
-## Axioms
+## Residuated Lattices: an Algebraic Glimpse at Substructural Logics
 
-\begin{align}
-&\textrm{R1a} && (\phi \rightarrow \psi) \rightarrow ((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow \chi)) \\\\
-&\textrm{R1b} && ((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow \chi)) \rightarrow (\phi \rightarrow \psi) \\\\
-&\textrm{R2} && \phi \rightarrow \phi \lor \psi\\\\
-&\textrm{R3} && \phi \lor \psi \rightarrow \psi \lor \phi\\\\
-&\textrm{R4} && (\phi \lor \psi)\lor \psi \rightarrow \phi \lor \psi\\\\
-&\textrm{R5a} && 0 \rightarrow (\phi \rightarrow \phi)\\\\
-&\textrm{R5b} && (\phi \rightarrow\phi) \rightarrow 0\\\\
-&\textrm{R6a} && ((\phi \rightarrow \psi)\lor 0 \rightarrow (\psi \rightarrow \phi) \lor 0) \rightarrow (\psi \rightarrow \phi)\\\\
-&\textrm{R6b} &&  (\psi \rightarrow \phi) \rightarrow ((\phi \rightarrow \psi)\lor 0 \rightarrow (\psi \rightarrow \phi) \lor 0)
-\end{align}
+(Galatos et al, 2007)
 
 
 
-## Soundness
-$\Rightarrow$ Abelian lattice ordered groups
+<embed src="logic-hierarchy.svg"/>
 
 
 
-## Completeness
-$\Rightarrow$ The Logic of Equilibrium (Galli et al.)
-
-
-
-### A Proof
-
-<div style='zoom:0.5;'>
-\begin{align}
-& (1) && \alpha \rightarrow 0 & \text{(assumption)}\\\\
-& (2) && \phi \rightarrow ((\phi \rightarrow \psi) \rightarrow \psi) & \text{(MP, R1b, R1b)}\\\\
-& (3) && \phi \lor \psi \rightarrow (\phi \lor \chi) \lor \psi & \text{(RI, R2)}\\\\
-& (4) && (\phi \lor \psi) \lor \chi \rightarrow (\psi \lor \phi) \lor \chi & \text{(RI, R3)}\\\\
-& (5) && (\phi \lor \psi \rightarrow \chi) \rightarrow (\psi \lor \phi \rightarrow \chi) & \text{(MP, R3, R1a)}\\\\
-& (6) && (\phi \lor \psi \rightarrow \chi) \rightarrow ((\phi \lor \psi) \lor \psi \rightarrow \chi) & \text{(MP, R4, R1a)}\\\\
-& (7) && 0 & \text{(MP, R3, R5b)}\\\\
-& (8) && ((\phi \rightarrow \psi) \rightarrow \chi) \rightarrow (((\psi \rightarrow \phi) \lor 0 \rightarrow (\phi \rightarrow \psi) \lor 0) \rightarrow \chi) & \text{(MP, R6a, R1a)}\\\\
-& (9) && \alpha \lor \phi \rightarrow 0 \lor \phi & \text{(RI, 1)}\\\\
-& (10) && (0 \rightarrow \phi) \rightarrow \phi & \text{(MP, 7, 2)}\\\\
-& (11) && (0 \rightarrow \phi) \lor \psi \rightarrow \phi \lor \psi & \text{(RI, 10)}\\\\
-& (12) && (0 \lor \phi \rightarrow \psi) \rightarrow (\alpha \lor \phi \rightarrow \psi) & \text{(MP, 9, R1a)}\\\\
-& (13) && ((\phi \lor \psi) \lor \chi \rightarrow \omega) \rightarrow (\phi \lor \chi \rightarrow \omega) & \text{(MP, 3, R1a)}\\\\
-& (14) && ((\phi \lor \psi) \lor \chi \rightarrow \omega) \rightarrow ((\psi \lor \phi) \lor \chi \rightarrow \omega) & \text{(MP, 4, R1a)}\\\\
-& (15) && ((\phi \rightarrow \psi \lor \chi) \lor 0 \rightarrow (\psi \lor \chi \rightarrow \phi) \lor 0) \rightarrow (\chi \lor \psi \rightarrow \phi) & \text{(MP, 5, 8)}\\\\
-& (16) && (\phi \lor \psi \rightarrow \chi) \rightarrow ((0 \rightarrow \phi) \lor \psi \rightarrow \chi) & \text{(MP, 11, R1a)}\\\\
-& (17) && (\phi \lor \psi) \lor \phi \rightarrow \psi \lor \phi & \text{(MP, R4, 14)}\\\\
-& (18) && \phi \lor \phi \rightarrow \psi \lor \phi & \text{(MP, 17, 13)}\\\\
-& (19) && \alpha \lor 0 \rightarrow \phi \lor 0 & \text{(MP, 18, 12)}\\\\
-& (20) && (\alpha \lor 0) \lor 0 \rightarrow \phi \lor 0 & \text{(MP, 19, 6)}\\\\
-& (21) && (0 \lor \alpha) \lor 0 \rightarrow \phi \lor 0 & \text{(MP, 20, 14)}\\\\
-& (22) && (0 \rightarrow 0 \lor \alpha) \lor 0 \rightarrow \phi \lor 0 & \text{(MP, 21, 16)}\\\\
-& (23) && \alpha \lor 0 \rightarrow 0 & \text{(MP, 22, 15)}
-\end{align}
-</div>
-
-
-
-# Riesz Logic and Fuzzy Logic
-
-
-
-## Fuzzy Axioms
-
-\begin{align}
-&\textrm{R1a} && (\phi \rightarrow \psi) \rightarrow ((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow \chi)) \\\\
-&\textrm{R2} && \phi \rightarrow \phi \lor \psi\\\\
-&\textrm{R3} && \phi \lor \psi \rightarrow \psi \lor \phi\\\\
-&\textrm{R4} && (\phi \lor \psi)\lor \psi \rightarrow \phi \lor \psi
-\end{align}
+## $\mathrm{FL}_{eo}$ algebras:
+$0 \le x$
 
 
 
