@@ -162,6 +162,33 @@ Paraconsistency: the Logical Way to the Inconsistent (2000)
 
 
 
+## Axioms
+
+<div style='zoom:0.8;'>
+\begin{align}
+&\textrm{identity} && (\phi \rightarrow \phi) \\\\
+&\textrm{weak permutation} && (\phi \rightarrow ((\psi \rightarrow \chi) \rightarrow \delta)) \rightarrow ((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow \delta)) \\\\
+&\textrm{suffixing} && (\phi \rightarrow \psi) \rightarrow ((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow \chi)) \\\\
+&\land\rightarrow && (\phi \land \psi) \rightarrow \phi \\\\
+&\land\rightarrow && (\phi \land \psi) \rightarrow \psi \\\\
+&\rightarrow\land && ((\phi \rightarrow \psi) \land (\phi \rightarrow \chi)) \rightarrow (\phi \rightarrow (\psi \land \chi))\\\\
+&\rightarrow\lor && \phi \rightarrow (\phi \lor \psi) \\\\
+&\rightarrow\lor && \psi \rightarrow (\phi \lor \psi) \\\\
+&\lor\rightarrow && ((\phi \rightarrow \chi) \land (\psi \rightarrow \chi)) \rightarrow ((\phi \lor \psi) \rightarrow \chi)\\\\
+&\textrm{distributivity} && (\phi \land (\psi \lor \chi)) \rightarrow ((\phi \land \psi) \lor (\phi \land \chi))\\\\
+&\textrm{contraposition} && (\phi \rightarrow \lnot \psi) \rightarrow (\psi \rightarrow \lnot \phi)\\\\
+&\textrm{double negation} && \lnot\lnot \phi \rightarrow \phi\\\\
+\end{align}
+</div>
+
+
+
+## Rules
+###<br>
+$$\huge{\frac{\phi,\ \phi \rightarrow \psi}{\psi}} \quad\quad \huge{\frac{\phi,\ \psi}{\phi \land \psi}}$$
+
+
+
 # Abelian Logic and Fuzzy Logic
 
 
