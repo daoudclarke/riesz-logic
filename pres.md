@@ -108,6 +108,29 @@ $$\Huge{\neg{\mathit{orange}}}$$
 
 
 
+$$\Huge{{\widehat{\mathit{fruit}}} - \widehat{\mathit{orange}}}$$
+# <br>
+$$\Huge{-\widehat{{\mathit{orange}}}}$$
+
+
+
+## Assertions assert positivity
+
+
+
+$$\large{\mathit{orange}\rightarrow \mathit{fruit}}$$
+## <br>
+$$\large{\widehat{\mathit{fruit}} - \widehat{\mathit{orange}}} \ge 0$$
+## <br>
+$$\large{\widehat{\mathit{orange}}} \le \widehat{\mathit{fruit}}$$
+
+
+
+<div class="disjunction-title">$\widehat{\mathit{orange}}$</div>
+<div class="disjunction"></div>
+
+
+
 ## What is truth?
 
 
@@ -124,29 +147,6 @@ $$\Huge{\neg{\mathit{orange}}}$$
 
 
 
-## Assertions assert positivity
-
-
-
-$$\large{\mathit{orange}\rightarrow \mathit{fruit}}$$
-## <br>
-$$\large{\widehat{\mathit{fruit}} - \widehat{\mathit{orange}}} \ge 0$$
-## <br>
-$$\large{\widehat{\mathit{orange}}} \le \widehat{\mathit{fruit}}$$
-
-
-
-$$\Huge{\neg\mathit{orange}}$$
-## <br>
-$$\Huge{-\widehat{\mathit{orange}}}$$
-
-
-
-<div class="disjunction-title">$\widehat{\mathit{orange}}$</div>
-<div class="disjunction"></div>
-
-
-
 ## Vector lattices are abelian lattice ordered groups
 
 $\Rightarrow$ Abelian Logic (Meyer and Slaney)
@@ -156,7 +156,10 @@ $\Rightarrow$ Abelian Logic (Meyer and Slaney)
 ## Abelian lattice ordered group
 
  - Abelian group: $\ \ \quad x - x = 0$
- - Lattice ordered: $\quad x \land y + z = (x + z) \land (y + z)$ 
+ - Lattice ordered: 
+ 
+ $$x \land y + z = (x + z) \land (y + z)$$ 
+ $$x \lor y + z = (x + z) \lor (y + z)$$ 
 
 
 
@@ -214,16 +217,6 @@ $$\huge{\frac{\phi,\ \phi \rightarrow \psi}{\psi}} \quad\quad \huge{\frac{\phi,\
 
 
 
-## Relevance logics: reject
- 
-$\phi \rightarrow (\psi \rightarrow \phi)$
-
- - If 2 + 2 = 4, then the fact the Moon is made of Camembert implies that 2 + 2 = 4.
- - But 2 + 2 = 4. Therefore, by modus ponens, the fact that the Moon
-   is made of Camembert implies that 2 + 2 = 4
-
-
-
 # Relation to Other Logics
 
 
@@ -231,6 +224,16 @@ $\phi \rightarrow (\psi \rightarrow \phi)$
 ## Residuated Lattices: an Algebraic Glimpse at Substructural Logics
 
 (Galatos et al, 2007)
+
+
+
+## Relevance logics: reject
+ 
+$\phi \rightarrow (\psi \rightarrow \phi)$
+
+ - If 2 + 2 = 4, then the fact the Moon is made of Camembert implies that 2 + 2 = 4.
+ - But 2 + 2 = 4. Therefore, by modus ponens, the fact that the Moon
+   is made of Camembert implies that 2 + 2 = 4
 
 
 
@@ -305,15 +308,31 @@ T(a, T(b, c)) &= T(T(a, b), c)\\\\
 
 
 
-# Conclusion
+# What next?
+
+
+
+## Higher order Abelian Logic
+
+
+
+## Abelian Logic for Montague Semantics
+
+
+
+## Scalar Multiplication
+
+
+
+## Neural Networks and Abelian Logic
+
+
+
+# Summary
 
 
 
 ## Vector spaces in CL have a logic
-
-
-
-## Future work: higher order logic
 
 
 
