@@ -11,7 +11,8 @@ Artificial Intelligence Group Seminar, University of York
 ## Overview
 
  - A Logic for Vector Space Semantics
- - Relation to Fuzzy logic
+ - Abelian Logic
+ - Relation to other logics
 
 
 
@@ -152,6 +153,13 @@ $\Rightarrow$ Abelian Logic (Meyer and Slaney)
 
 
 
+## Abelian lattice ordered group
+
+ - Abelian group: $\ \ \quad x - x = 0$
+ - Lattice ordered: $\quad x \land y + z = (x + z) \land (y + z)$ 
+
+
+
 ## Abelian Logic (from A to Z)
 
 Paraconsistent Logic: Essays on the Inconsistent (1989) 
@@ -162,13 +170,28 @@ Paraconsistency: the Logical Way to the Inconsistent (2000)
 
 
 
-## Axioms
+## Axioms (Part I)
 
-<div style='zoom:0.8;'>
+<div style='zoom:1;'>
 \begin{align}
 &\textrm{identity} && (\phi \rightarrow \phi) \\\\
 &\textrm{weak permutation} && (\phi \rightarrow ((\psi \rightarrow \chi) \rightarrow \delta)) \rightarrow ((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow \delta)) \\\\
 &\textrm{suffixing} && (\phi \rightarrow \psi) \rightarrow ((\psi \rightarrow \chi) \rightarrow (\phi \rightarrow \chi)) \\\\
+&\textrm{contraposition} && (\phi \rightarrow \lnot \psi) \rightarrow (\psi \rightarrow \lnot \phi)\\\\
+&\textrm{double negation} && \lnot\lnot \phi \rightarrow \phi\\\\
+&\textrm{assertion} && \phi \rightarrow ((\phi \rightarrow \psi) \rightarrow \psi)\\\\
+&\textrm{relativization} && ((\phi \rightarrow \psi) \rightarrow \psi) \rightarrow \phi\\\\
+\end{align}
+</div>
+<!-- &\textrm{unit} && 1\\\\ -->
+<!-- &\textrm{unit implication} && 1 \rightarrow (\phi \rightarrow \phi)\\\\ -->
+
+
+
+## Axioms (Part II)
+
+<div style='zoom:1;'>
+\begin{align}
 &\land\rightarrow && (\phi \land \psi) \rightarrow \phi \\\\
 &\land\rightarrow && (\phi \land \psi) \rightarrow \psi \\\\
 &\rightarrow\land && ((\phi \rightarrow \psi) \land (\phi \rightarrow \chi)) \rightarrow (\phi \rightarrow (\psi \land \chi))\\\\
@@ -176,8 +199,6 @@ Paraconsistency: the Logical Way to the Inconsistent (2000)
 &\rightarrow\lor && \psi \rightarrow (\phi \lor \psi) \\\\
 &\lor\rightarrow && ((\phi \rightarrow \chi) \land (\psi \rightarrow \chi)) \rightarrow ((\phi \lor \psi) \rightarrow \chi)\\\\
 &\textrm{distributivity} && (\phi \land (\psi \lor \chi)) \rightarrow ((\phi \land \psi) \lor (\phi \land \chi))\\\\
-&\textrm{contraposition} && (\phi \rightarrow \lnot \psi) \rightarrow (\psi \rightarrow \lnot \phi)\\\\
-&\textrm{double negation} && \lnot\lnot \phi \rightarrow \phi\\\\
 \end{align}
 </div>
 
@@ -189,7 +210,21 @@ $$\huge{\frac{\phi,\ \phi \rightarrow \psi}{\psi}} \quad\quad \huge{\frac{\phi,\
 
 
 
-# Abelian Logic and Fuzzy Logic
+## Abelian Logic is sound and complete w.r.t. abelian lattice ordered groups
+
+
+
+## Relevance logics: reject
+ 
+$\phi \rightarrow (\psi \rightarrow \phi)$
+
+ - If 2 + 2 = 4, then the fact the Moon is made of Camembert implies that 2 + 2 = 4.
+ - But 2 + 2 = 4. Therefore, by modus ponens, the fact that the Moon
+   is made of Camembert implies that 2 + 2 = 4
+
+
+
+# Relation to Other Logics
 
 
 

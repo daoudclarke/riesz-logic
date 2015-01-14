@@ -9,7 +9,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="937.95117"
+   width="927.95117"
    height="573.26953"
    id="svg2"
    version="1.1"
@@ -83,7 +83,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1"
      inkscape:cx="569.61524"
-     inkscape:cy="230.8789"
+     inkscape:cy="202.8789"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -104,7 +104,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -112,118 +112,124 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(171.61523,-189.97156)">
+     transform="translate(171.61523,-161.97156)">
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="346.37305"
-       y="220.36218"
+       x="337.37305"
+       y="192.36218"
        id="text2985"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan2987"
-         x="346.37305"
-         y="220.36218">Lambek Calculus</tspan><tspan
+         x="337.37305"
+         y="192.36218">Full Lambek Calculus - FL</tspan><tspan
          sodipodi:role="line"
-         x="346.37305"
-         y="270.36218"
+         x="337.37305"
+         y="242.36218"
          id="tspan3066">(Residuated Lattices)</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        x="69.009766"
-       y="476.92078"
+       y="536.92078"
        id="text2985-9"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          x="69.009766"
-         y="476.92078"
+         y="536.92078"
          id="tspan2989-7">Abelian Logic</tspan><tspan
          sodipodi:role="line"
          x="69.009766"
-         y="526.92078"
+         y="586.92078"
          id="tspan3017">(Lattice-ordered groups)</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="588.94336"
-       y="572.16541"
+       x="578.94336"
+       y="544.16541"
        id="text2985-5"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="588.94336"
-         y="572.16541"
+         x="578.94336"
+         y="544.16541"
          id="tspan2989-6">Basic Fuzzy Logic</tspan><tspan
          sodipodi:role="line"
-         x="588.94336"
-         y="622.16541"
+         x="578.94336"
+         y="594.16541"
          id="tspan3051">(BL-algebras)</tspan><tspan
          sodipodi:role="line"
-         x="588.94336"
-         y="672.16541"
+         x="578.94336"
+         y="644.16541"
          id="tspan3068" /></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="591.04297"
-       y="704.92078"
+       x="581.04297"
+       y="676.92078"
        id="text2985-0"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan2987-8"
-         x="591.04297"
-         y="704.92078">Łukasiewicz Logic</tspan><tspan
+         x="581.04297"
+         y="676.92078">Łukasiewicz Logic</tspan><tspan
          sodipodi:role="line"
-         x="591.04297"
-         y="754.92078"
+         x="581.04297"
+         y="726.92078"
          id="tspan2989-3">(MV-algebras)</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="457.25565"
-       y="489.36218"
+       x="547.25562"
+       y="461.36218"
        id="text3074"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3076"
-         x="457.25565"
-         y="489.36218">FL<tspan
+         x="547.25562"
+         y="461.36218">FL<tspan
    style="font-size:65.00091553%;baseline-shift:sub"
-   id="tspan3078">eo</tspan> algebras</tspan></text>
+   id="tspan3078">eo </tspan></tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="m 110,354.36218 -46,77"
+       d="M 109.27089,387.02373 72.729115,488.70065"
        id="path3082"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="m 554,361.36218 35,82"
+       d="m 563.99999,389.36218 11,34"
        id="path3084"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="m 590.07655,638.89842 -0.88504,27.21904"
+       d="m 580.07655,610.89842 -0.88504,27.21904"
        id="path3086"
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        x="344.39453"
-       y="339.79968"
+       y="325.79968"
        id="text2985-6"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          x="344.39453"
-         y="339.79968"
-         id="tspan3066-5">Commutative residuated lattices</tspan></text>
+         y="325.79968"
+         id="tspan3066-5">FL<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3023">e</tspan></tspan><tspan
+         sodipodi:role="line"
+         x="344.39453"
+         y="375.79968"
+         id="tspan3021">(Commutative residuated lattices)</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="m 590.07655,506.14305 -0.88504,27.21904"
+       d="m 580.07655,478.14305 -0.88504,27.21904"
        id="path3086-6"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="m 354.81483,281.63157 -0.88504,27.21904"
+       d="m 342.81483,257.63157 -0.88504,27.21904"
        id="path3086-6-9"
        inkscape:connector-curvature="0" />
   </g>
